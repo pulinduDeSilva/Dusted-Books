@@ -4,7 +4,7 @@ function Hero() {
   return (
     <div className="relative flex items-center justify-center h-[600px] w-full overflow-hidden">
       <div
-        className="absolute  inset-0 bg-cover bg-center blur-sm md:blur-md scale-105 z-[-99]"
+        className="absolute inset-0 bg-cover bg-center blur-sm md:blur-md scale-105 z-[-1]"
         style={{ backgroundImage: `url(${HeroImg})` }}
         aria-hidden="true"
       />
@@ -22,8 +22,8 @@ function Hero() {
             the image is a separate absolutely positioned background
           </p>
           <div className="flex gap-4 mt-6 text-black font-semibold">
-            <button className="px-3 py-1 bg-white rounded-md text-lg">Browse</button>
-            <button className="px-3 py-1 bg-white rounded-md">Sell Books</button>
+            <button className="px-3 py-1 bg-white rounded-md text-lg hover:scale-105 transition-transform duration-100 ease-linear">Browse</button>
+            <button className="px-3 py-1 bg-white rounded-md hover:scale-105 transition-transform duration-100 ease-linear">Sell Books</button>
           </div>
         </div>
       </div>
