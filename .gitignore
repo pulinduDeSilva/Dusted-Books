@@ -1,0 +1,58 @@
+# ==========================================
+# Dependencies
+# ==========================================
+# Blocks massive node_modules folders in root, client, and server
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==========================================
+# Environment Variables & Secrets (CRITICAL)
+# ==========================================
+# Never commit your database passwords, JWT secrets, or API keys
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# ==========================================
+# Production Builds
+# ==========================================
+# Frontend build outputs (Vite uses 'dist', CRA uses 'build')
+dist/
+**/dist/
+build/
+**/build/
+out/
+.next/
+
+# ==========================================
+# IDE and System Files
+# ==========================================
+# Editor-specific settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# ==========================================
+# Testing & Logs
+# ==========================================
+coverage/
+**/coverage/
+*.log
+logs
+*.log.*
