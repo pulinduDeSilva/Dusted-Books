@@ -27,7 +27,7 @@ function userCreateForm() {
     console.log("User Data:", userData);
     try {
       const respond = await axios.post(
-        `${import.meta.env.VITE_API_URL}/create`,
+        `${import.meta.env.VITE_API_URL}/users/signup`,
         userData,
       );
 
