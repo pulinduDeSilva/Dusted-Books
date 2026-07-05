@@ -1,14 +1,17 @@
 import { useState } from "react";
+import { useAuth } from "../context/authContext";
 
 function Nav() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   return (
     <nav className="fixed block w-full  px-4 py-2 mx-auto l z-999">
       <div className="container flex flex-wrap items-center justify-between mx-auto text-white lg:w-[80%] bg-black/30 shadow-[0px_3px_10px_rgba(0,0,0,0.3)] rounded-md px-8 py-3 mt-4 lg:mt-10 backdrop-blur-sm border border-zinc-300/20">
         <a
-          href="#"
-          className="mr-4 block cursor-pointer py-1.5 text-base text-white font-semibold"
+          href="/"
+          className="mr-4 block py-1.5 text-base text-white font-semibold"
         >
           DustedBooks
         </a>
@@ -19,7 +22,7 @@ function Nav() {
           aria-label="Toggle navigation"
           aria-expanded={isOpen}
           aria-controls="mobile-nav"
-          onClick={() => setIsOpen((current) => !current)}
+          onClick={() => {setIsOpen((current) => !current), accountDropdownOpen && setAccountDropdownOpen(false)}}
         >
           <span className="left-1/2 top-1/2 -tranwhite-x-1/2 -tranwhite-y-1/2 transform">
             <svg
@@ -48,6 +51,36 @@ function Nav() {
           aria-hidden={!isOpen}
         >
           <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+            {user && user.role === "admin" && (
+              <li className="flex items-center p-1 text-sm gap-x-2 text-white-600">
+              
+              <a href="/admin" className="flex items-center gap-2">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  viewBox="0 0 24 24" 
+                  width="20" 
+                  height="20" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  className="admin-icon"
+                >
+                  {/* Top Left Block */}
+                  <rect x="3" y="3" width="7" height="9" rx="1" />
+                  {/* Bottom Left Block */}
+                  <rect x="3" y="16" width="7" height="5" rx="1" />
+                  {/* Top Right Block */}
+                  <rect x="14" y="3" width="7" height="5" rx="1" />
+                  {/* Bottom Right Block */}
+                  <rect x="14" y="12" width="7" height="9" rx="1" />
+                </svg>
+              Admin
+              </a>
+            </li>
+            )}
+            
             <li className="flex items-center p-1 text-sm gap-x-2 text-white-600">
               
               <a href="#" className="flex items-center gap-2">
@@ -68,8 +101,8 @@ function Nav() {
               Pages
               </a>
             </li>
-            <li className="flex items-center p-1 text-sm gap-x-2 text-white">
-              <a href="#" className="flex items-center gap-2">
+            <li className="flex items-center p-1 text-sm gap-x-2 text-white ">
+              <button className="flex items-center gap-2 cursor-pointer" onClick={() => setAccountDropdownOpen(!accountDropdownOpen)}>
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -85,9 +118,23 @@ function Nav() {
                 />
               </svg>
                 Account
-              </a>
+              </button>
+              
             </li>
-            
+            <div id="account-dropdown" className="sm:block lg:absolute right-0 mt-2 sm:full lg:w-48  rounded-md shadow-lg lg:mt-10 z-20" style={{ display: accountDropdownOpen ? "block" : "none" }}>
+                <ul className="lg:absolute right-0 mt-2 sm:full lg:w-48 bg-white rounded-md shadow-lg py-1 z-20">
+                  <li>
+                    <button  className="block px-4 text-left w-full py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      Profile
+                    </button>
+                  </li>
+                  <li>
+                    <button className="block px-4 py-2 w-full text-left text-sm text-gray-700 hover:bg-gray-100" onClick={logout}>
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
           </ul>
         </div>
       </div>

@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react"; // 1. Import useEffect
-import Workflow from "../components/Workflow";
-import Hero from "../components/Hero";
-import Nav from "../components/Nav";
+import { useEffect } from "react";
+import Workflow from "../../components/customer/Workflow";
+import Hero from "../../components/customer/Hero";
+import Nav from "../../components/Nav";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
-import Admin from "./Admin";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
+
 function Home() {
-
-  const [role, setRole] = useState("customer");
-
   useEffect(() => {
     const smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
@@ -28,24 +25,17 @@ function Home() {
     };
   }, []);
 
+  
+
   return (
     <div id="smooth-wrapper">
-      {role === "customer" && <Nav />}
+      <Nav />
 
       <div id="smooth-content">
-      {
-        role === "admin" ? (
-          <section id="admin-interface">
-            <Admin />
-          </section>
-        ) : (
-          <section id="customer-interface">
+        <section id="customer-interface">
             <Hero />
             <Workflow />
           </section>
-        )
-        
-      }
       </div>
     </div>
   );

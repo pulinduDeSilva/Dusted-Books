@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import roles from "../enums/roles";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 
 function AuthPage() {
-  const navigate = useNavigate();
+  const { refreshUser } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
@@ -54,7 +55,7 @@ function AuthPage() {
 
       if (isLogin) {
         setMessage({ type: "success", text: "Logged in successfully!" });
-        navigate("/");
+        refreshUser();
       } else {
         // 2. If it was a signup, keep them here so they can see success and log in
         setMessage({
