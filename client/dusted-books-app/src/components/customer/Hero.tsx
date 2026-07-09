@@ -1,4 +1,5 @@
 import HeroImg from "../../assets/hero-imgs/hero-img2.jpg";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -22,7 +23,12 @@ function Hero() {
             the image is a separate absolutely positioned background
           </p>
           <div className="flex gap-4 mt-6 text-black font-semibold">
-            <button className="px-3 py-1 bg-white rounded-md text-lg hover:scale-105 transition-transform duration-100 ease-linear">Browse</button>
+            <Link
+              to="/browse"
+              className="px-3 py-1 bg-white rounded-md text-lg hover:scale-105 transition-transform duration-100 ease-linear"
+            >
+              Browse
+            </Link>
             <button className="px-3 py-1 bg-white rounded-md hover:scale-105 transition-transform duration-100 ease-linear">Sell Books</button>
           </div>
         </div>

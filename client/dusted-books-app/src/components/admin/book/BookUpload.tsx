@@ -10,7 +10,9 @@ export default function BookUpload() {
   const [title, setTitle] = useState<string>("");
   const [author, setAuthor] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [price, setPrice] = useState<string>(""); 
+  const [price, setPrice] = useState<string>("");
+  const [category, setCategory] = useState<string[]>([]);
+  const [condition, setCondition] = useState<string>("");
 
   const [status, setStatus] = useState<{ type: string; message: string }>({ 
     type: "", 
@@ -37,12 +39,18 @@ export default function BookUpload() {
   // upload to backend
   const handleUpload = async () => {
     if (!image) return;
+    if (category.length === 0) {
+      setStatus({ type: "error", message: "Please choose at least one category." });
+      return;
+    }
 
     const formData = new FormData();
     formData.append("title", title);
     formData.append("author", author);
     formData.append("description", description);
     formData.append("price", price);
+    category.forEach((cat) => formData.append("category", cat));
+    formData.append("condition", condition);
     formData.append("image", image);
 
     console.log("FormData contents:");
@@ -73,6 +81,8 @@ export default function BookUpload() {
       setAuthor("");
       setDescription("");
       setPrice("");
+      setCategory([]);
+      setCondition("");
 
     } catch (err) {
       console.log("Upload error:", err);
@@ -122,6 +132,64 @@ export default function BookUpload() {
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
             />
+          </div>
+        </div>
+
+        <div className="mt-6 w-full grid gap-8 md:grid-cols-2">
+          <div>
+            <label className="text-black/70" htmlFor="category">
+              Category
+            </label>
+            <div className="mt-2 grid gap-2 rounded border border-gray-300/70 bg-white p-3">
+              {[
+                "Fiction",
+                "Non-Fiction",
+                "Mystery",
+                "Self Help",
+                "Romance",
+                "Science",
+                "History",
+                "Biography",
+              ].map((option) => (
+                <label key={option} className="inline-flex items-center gap-3 rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-slate-700 transition-shadow hover:border-indigo-300 hover:shadow-sm">
+                  <input
+                    type="checkbox"
+                    value={option}
+                    checked={category.includes(option)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCategory((prev) =>
+                        prev.includes(value)
+                          ? prev.filter((item) => item !== value)
+                          : [...prev, value],
+                      );
+                    }}
+                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  />
+                  <span>{option}</span>
+                </label>
+              ))}
+            </div>
+            <p className="mt-2 text-xs text-slate-500">Choose one or more categories for this book.</p>
+          </div>
+          <div>
+            <label className="text-black/70" htmlFor="condition">
+              Condition
+            </label>
+            <select
+              id="condition"
+              required
+              value={condition}
+              onChange={(e) => setCondition(e.target.value)}
+              className="min-h-[40px] px-2 py-2 mt-2 w-full border border-gray-500/30 rounded outline-none focus:border-indigo-300"
+            >
+              <option value="">Select condition</option>
+              <option value="New">New</option>
+              <option value="Like New">Like New</option>
+              <option value="Good">Good</option>
+              <option value="Fair">Fair</option>
+              <option value="Used">Used</option>
+            </select>
           </div>
         </div>
 

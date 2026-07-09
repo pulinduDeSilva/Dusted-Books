@@ -4,7 +4,7 @@ import NavAdmin from "../../components/Nav_Admin";
 function AdminPage() {
 
     return (
-        <div className="flex min-h-screen w-full">
+        <div className="flex min-h-screen w-full bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
             <NavAdmin /> 
             
             <div className="flex-1 min-h-screen overflow-y-auto px-4 py-20 xl:ml-[20%] md:px-10 xl:py-10">

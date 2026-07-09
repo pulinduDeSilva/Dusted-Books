@@ -18,11 +18,23 @@ const bookSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    category: {
+        type: [String],
+        required: true,
+        validate: {
+            validator: (value) => Array.isArray(value) && value.length > 0,
+            message: "At least one category is required",
+        },
+    },
+    condition: {
+        type: String,
+        required: true
+    },
     imgUrl: {
         type: String,
         required: true
-    }   
-    
-}, {collection: "books"});
+    }
+
+}, { collection: "books" });
 
 module.exports = mongoose.model("Book", bookSchema);
