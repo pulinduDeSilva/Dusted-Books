@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import roles from "../enums/roles";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 
 function AuthPage() {

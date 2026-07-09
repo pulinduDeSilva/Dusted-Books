@@ -5,7 +5,7 @@ import {
   useContext,
   type ReactNode,
 } from "react";
-import { getMe } from "../service/Auth";
+import { getMe, logout as logoutRequest } from "../service/Auth";
 
 export interface UserDef {
   id: string;
@@ -42,7 +42,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+      await logoutRequest();
+    } catch (error) {
+      // Clear local auth state even if the server cookie could not be cleared.
+    }
+
     setUser(null);
   };
 
