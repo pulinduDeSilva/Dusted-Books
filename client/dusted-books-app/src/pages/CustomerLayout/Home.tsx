@@ -5,7 +5,7 @@ import Nav from "../../components/Nav";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
-
+import Books from "../../components/Books";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 
@@ -28,12 +28,13 @@ function Home() {
   
 
   return (
-    <div id="smooth-wrapper">
+    <div id="smooth-wrapper" className="bg-[#fcfaf8] dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white min-h-screen">
       <Nav />
 
       <div id="smooth-content">
         <section id="customer-interface">
             <Hero />
+            <Books />
             <Workflow />
           </section>
       </div>
