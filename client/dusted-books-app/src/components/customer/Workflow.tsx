@@ -1,27 +1,45 @@
 function Workflow() {
   return (
-    <>
-      <section className="books h-screen flex flex-col items-center justify-start gap-4 m-5">
-        <aside className="flex flex-col justify-center items-start mt-30 md:mt-40 min-w-[70%]">
-          <h1 className="text-black text-[40px] md:text-7xl font-semibold my-5">
-            Read Again.
-          </h1>
-          <h2 className="text-black text-base md:text-lg">
-            Discover affordable hidden gems, clear your shelves, and pass on the
-            joy of reading. <br /> Shop and sell used books today.
-          </h2>
-        </aside>
-        <aside className="flex flex-col justify-center items-end mt-30 md:mt-40 min-w-[70%]">
-          <h1 className="text-black text-[40px] md:text-7xl font-semibold my-5">
-            Done Reading?
-          </h1>
-          <h2 className="text-black text-base md:text-lg text-right">
-            Turn Your Pages Into Cash. Don’t let your favorite
-            stories gather dust. Sell them directly to other book lovers in our community.
-          </h2>
-        </aside>
-      </section>
-    </>
+    <section className="py-24 sm:py-32 relative overflow-hidden">
+      {/* Decorative background blobs */}
+      <div className="absolute top-0 right-0 -mr-20 w-72 h-72 rounded-full bg-zinc-200/50 dark:bg-gray-700/30 blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 -ml-20 w-96 h-96 rounded-full bg-zinc-200/50 dark:bg-gray-700/30 blur-3xl pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative z-10">
+        
+        {/* Step 1 */}
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mb-32">
+          <div className="flex-1">
+            <div className="inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-zinc-900 dark:bg-gray-700 text-white mb-8 shadow-lg shadow-zinc-900/20 dark:shadow-black/40">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-900 dark:text-gray-100 tracking-tight mb-6 leading-tight">
+              Read Again.
+            </h2>
+            <p className="text-lg md:text-xl text-zinc-600 dark:text-gray-400 leading-relaxed max-w-2xl font-medium">
+              Discover affordable hidden gems, clear your shelves, and pass on the joy of reading. Shop and sell used books today with absolute confidence.
+            </p>
+          </div>
+          
+          <div className="flex-1 w-full">
+            <div className="aspect-[4/3] rounded-[2rem] bg-white dark:bg-gray-800 border border-zinc-200 dark:border-gray-700 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)] relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-zinc-50 to-white dark:from-gray-800 dark:to-gray-750 opacity-50 group-hover:opacity-100 transition-opacity duration-700"></div>
+              
+              {/* Abstract decorative elements representing reading */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-64 bg-zinc-100 dark:bg-gray-700 rounded-xl shadow-xl rotate-[-6deg] group-hover:rotate-0 transition-all duration-700 ease-out border border-zinc-200 dark:border-gray-600"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-64 bg-white dark:bg-gray-750 rounded-xl shadow-2xl rotate-[3deg] group-hover:rotate-[8deg] transition-all duration-700 ease-out border border-zinc-100 dark:border-gray-600 flex items-center justify-center">
+                 <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-zinc-300 dark:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                 </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
   );
 }
 
