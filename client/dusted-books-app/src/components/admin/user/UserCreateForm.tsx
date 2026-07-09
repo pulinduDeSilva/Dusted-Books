@@ -3,6 +3,7 @@ import roles from "../../../enums/roles";
 import axios from "axios";
 
 function userCreateForm() {
+  const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
@@ -26,10 +27,7 @@ function userCreateForm() {
 
     console.log("User Data:", userData);
     try {
-      const respond = await axios.post(
-        `${import.meta.env.VITE_API_URL}/users/signup`,
-        userData,
-      );
+      const respond = await axios.post(`${apiBaseUrl}/users/signup`, userData);
 
       console.log("User created successfully:", respond.data);
       setSuccess("User created successfully!"); // Set success message
