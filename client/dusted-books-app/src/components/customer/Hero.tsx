@@ -24,12 +24,17 @@ function Hero() {
           </p>
           <div className="flex gap-4 mt-6 text-black font-semibold">
             <Link
-              to="/browse"
+              to="/sell-book"
               className="px-3 py-1 bg-white rounded-md text-lg hover:scale-105 transition-transform duration-100 ease-linear"
             >
-              Browse
+              Sell Book
             </Link>
-            <button className="px-3 py-1 bg-white rounded-md hover:scale-105 transition-transform duration-100 ease-linear">Sell Books</button>
+            <Link
+              to="/my-requests"
+              className="px-3 py-1 bg-white rounded-md text-lg hover:scale-105 transition-transform duration-100 ease-linear"
+            >
+              Request Book
+            </Link>
           </div>
         </div>
       </div>
