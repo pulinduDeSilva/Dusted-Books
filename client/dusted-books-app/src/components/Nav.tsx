@@ -147,6 +147,18 @@ function Nav() {
               </Link>
             </li>
 
+            {user && user.role === "customer" && (
+              <li className="flex items-center">
+                <Link
+                  to="/my-requests"
+                  className="group flex items-center gap-2 text-sm font-medium text-amber-950/70 dark:text-amber-200/70 hover:text-amber-950 dark:hover:text-amber-100 transition-colors py-2 relative"
+                >
+                  <span>My Requests</span>
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-amber-950 dark:bg-amber-400 transition-all duration-300 group-hover:w-full rounded-full"></span>
+                </Link>
+              </li>
+            )}
+
             {user && user.role === "admin" && (
               <li className="flex items-center">
                 <Link 
