@@ -20,6 +20,8 @@ import BookUpload from "./components/admin/book/BookUpload";
 import Browse from "./pages/Browse";
 import Cart from "./pages/Cart";
 import BookDetails from "./pages/BookDetails";
+import MyRequests from "./pages/CustomerLayout/MyRequests";
+import RequestManagement from "./components/admin/requests/RequestManagement";
 
 function App() {
   return (
@@ -74,6 +76,15 @@ function App() {
               />
 
               <Route
+                path="/my-requests"
+                element={
+                  <ProtectedRoute>
+                    <MyRequests />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
                 path="/admin"
                 element={
                   <AdminRoute>
@@ -91,6 +102,8 @@ function App() {
                 <Route path="books" element={<BookManagement />} >
                   <Route path="add" element={<BookUpload />} ></Route>
                 </Route>
+                {/* request-routes */}
+                <Route path="requests" element={<RequestManagement />} />
               </Route>
 
               <Route path="/unauthorized" element={<Unauthorized />} />
