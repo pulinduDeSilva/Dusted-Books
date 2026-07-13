@@ -25,6 +25,7 @@ app.listen(PORT, ()=> {
 app.use("/api", require("./routes/authRoute"));
 app.use("/api", require("./routes/userRoutes"));
 app.use("/api", require("./routes/bookRoutes"));
+app.use("/api", require("./routes/bookRequestRoutes"));
 
 
 //test route
