@@ -6,7 +6,7 @@ function Cart() {
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#fcfaf8] dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white pt-28 pb-20">
+    <div className="min-h-screen bg-[#fcfaf8] dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white pt-28 pb-20 overflow-x-hidden w-full max-w-full">
       <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <section className="rounded-3xl bg-white dark:bg-gray-900 border border-amber-900/10 dark:border-gray-700 p-8 shadow-sm shadow-amber-900/5 dark:shadow-black/20">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">

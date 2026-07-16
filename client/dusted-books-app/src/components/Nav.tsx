@@ -56,7 +56,7 @@ function Nav() {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 w-full z-[999] transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 max-w-full z-[999] transition-all duration-300 ${
         scrolled 
           ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b border-amber-900/10 dark:border-gray-700/50 shadow-md py-3" 
           : "bg-[#fcfaf8]/95 dark:bg-gray-900/90 py-5 shadow-sm"

@@ -30,6 +30,7 @@ function NavAdmin() {
   const isUserSectionActive = useMatch("/admin/users/*");
   const isBookSectionActive = useMatch("/admin/books/*");
   const isRequestsSectionActive = useMatch("/admin/requests/*");
+  const isSellRequestsSectionActive = useMatch("/admin/sell-requests/*");
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -117,6 +118,21 @@ function NavAdmin() {
             <div className={`flex flex-col overflow-hidden transition-all duration-300 ${isRequestsSectionActive ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
               <NavLink to="/admin/requests" className={subLinkStyles}>
                 View Requests
+              </NavLink>
+            </div>
+
+            <NavLink to="/admin/sell-requests" className={linkStyles}>
+              <div className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
+                </svg>
+                Sell Requests
+              </div>
+            </NavLink>
+
+            <div className={`flex flex-col overflow-hidden transition-all duration-300 ${isSellRequestsSectionActive ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
+              <NavLink to="/admin/sell-requests" className={subLinkStyles}>
+                View Sell Requests
               </NavLink>
             </div>
           </nav>

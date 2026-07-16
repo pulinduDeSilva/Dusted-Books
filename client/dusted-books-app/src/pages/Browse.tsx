@@ -122,7 +122,7 @@ function Browse() {
   const activeSortLabel = sortOptions.find((o) => o.value === sortBy)?.label ?? 'Featured';
 
   return (
-    <div className="min-h-screen bg-[#fcfaf8] dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white">
+    <div className="min-h-screen bg-[#fcfaf8] dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white overflow-x-hidden w-full max-w-full">
       <Nav />
 
       <main className="mx-auto max-w-7xl px-4 pb-24 pt-28 sm:px-6 lg:px-8 lg:pt-32">

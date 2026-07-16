@@ -143,7 +143,7 @@ function userCreateForm() {
 
         <button
           type="submit"
-          className="cursor-pointer hover:scale-103 transition-transform duration-50  ease-linear text-white bg-black box-border rounded-lg mt-4 border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+          className="mt-2 rounded bg-black dark:bg-amber-700 px-5 py-2.5 text-white transition-colors hover:bg-black/80 dark:hover:bg-amber-600 disabled:cursor-not-allowed disabled:opacity-60"
         >
           Create User
         </button>

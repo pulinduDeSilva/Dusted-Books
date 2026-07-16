@@ -112,7 +112,7 @@ function BookDetails() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fcfaf8] text-amber-950 dark:bg-gray-950 dark:text-amber-100">
+    <div className="min-h-screen bg-[#fcfaf8] text-amber-950 dark:bg-gray-950 dark:text-amber-100 overflow-x-hidden w-full max-w-full">
       <Nav />
 
       <main className="mx-auto flex max-w-6xl flex-col gap-6 px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pt-32">

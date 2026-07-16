@@ -317,14 +317,14 @@ export default function RequestManagement() {
                         }
                         className="rounded-full bg-emerald-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-emerald-500"
                       >
-                        ✓ Approve
+                        Approve
                       </button>
                       <button
                         onClick={() => handleAction(req._id, "rejected")}
                         disabled={actionLoading[req._id]}
                         className="rounded-full border border-red-300 bg-red-50 px-5 py-2 text-sm font-semibold text-red-600 transition hover:bg-red-100 disabled:opacity-60 dark:border-red-700/50 dark:bg-red-900/20 dark:text-red-400 dark:hover:bg-red-900/40"
                       >
-                        {actionLoading[req._id] ? "Processing…" : "✕ Reject"}
+                        {actionLoading[req._id] ? "Processing…" : "Reject"}
                       </button>
                     </div>
                   )}

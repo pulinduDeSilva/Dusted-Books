@@ -22,6 +22,9 @@ import Cart from "./pages/Cart";
 import BookDetails from "./pages/BookDetails";
 import MyRequests from "./pages/CustomerLayout/MyRequests";
 import RequestManagement from "./components/admin/requests/RequestManagement";
+import SellBook from "./pages/CustomerLayout/SellBook";
+import MySellRequests from "./pages/CustomerLayout/MySellRequests";
+import SellRequestManagement from "./components/admin/sell-requests/SellRequestManagement";
 
 function App() {
   return (
@@ -85,6 +88,24 @@ function App() {
               />
 
               <Route
+                path="/sell-book"
+                element={
+                  <ProtectedRoute>
+                    <SellBook />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/my-sell-requests"
+                element={
+                  <ProtectedRoute>
+                    <MySellRequests />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
                 path="/admin"
                 element={
                   <AdminRoute>
@@ -104,6 +125,8 @@ function App() {
                 </Route>
                 {/* request-routes */}
                 <Route path="requests" element={<RequestManagement />} />
+                {/* sell-request-routes */}
+                <Route path="sell-requests" element={<SellRequestManagement />} />
               </Route>
 
               <Route path="/unauthorized" element={<Unauthorized />} />

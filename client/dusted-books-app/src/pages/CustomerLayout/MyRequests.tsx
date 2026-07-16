@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Nav from "../../components/Nav";
-import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/cartContext";
 
@@ -54,7 +53,6 @@ const StatusBadge = ({ status }: { status: RequestStatus }) => {
 };
 
 export default function MyRequests() {
-  const { user } = useAuth();
   const navigate = useNavigate();
   const { addToCart, cartItems } = useCart();
 
@@ -151,7 +149,7 @@ export default function MyRequests() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fcfaf8] text-amber-950 dark:bg-gray-950 dark:text-amber-100">
+    <div className="min-h-screen bg-[#fcfaf8] text-amber-950 dark:bg-gray-950 dark:text-amber-100 overflow-x-hidden w-full max-w-full">
       <Nav />
 
       <main className="mx-auto max-w-3xl px-4 pb-20 pt-28 sm:px-6 lg:pt-32">

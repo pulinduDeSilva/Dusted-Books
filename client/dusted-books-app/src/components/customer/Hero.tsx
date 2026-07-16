@@ -18,22 +18,27 @@ function Hero() {
         </aside>
 
         <div className="hero-right flex flex-col items-center justify-center max-w-[500px] px-7 md:mr-8 gap-2 mt-7 md:mt-3 ">
-          <p className="text-white flex flex-col text-center">
-            The hero is now split into two layers in src/components/Hero.tsx:
-            the image is a separate absolutely positioned background
+          <p className="text-white flex flex-col text-center text-lg leading-relaxed drop-shadow">
+            Discover pre-loved books at great prices, or sell the ones you no longer need.
           </p>
-          <div className="flex gap-4 mt-6 text-black font-semibold">
+          <div className="flex flex-wrap gap-4 mt-6 text-black font-semibold justify-center">
             <Link
               to="/sell-book"
-              className="px-3 py-1 bg-white rounded-md text-lg hover:scale-105 transition-transform duration-100 ease-linear"
+              className="px-4 py-2 bg-white rounded-md text-lg hover:scale-105 transition-transform duration-100 ease-linear"
             >
-              Sell Book
+              Sell a Book
+            </Link>
+            <Link
+              to="/my-sell-requests"
+              className="px-4 py-2 bg-white rounded-md text-lg hover:scale-105 transition-transform duration-100 ease-linear"
+            >
+              My Sell Requests
             </Link>
             <Link
               to="/my-requests"
-              className="px-3 py-1 bg-white rounded-md text-lg hover:scale-105 transition-transform duration-100 ease-linear"
+              className="px-4 py-2 bg-white rounded-md text-lg hover:scale-105 transition-transform duration-100 ease-linear"
             >
-              Request Book
+              Request a Book
             </Link>
           </div>
         </div>
