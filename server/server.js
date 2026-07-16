@@ -26,6 +26,7 @@ app.use("/api", require("./routes/authRoute"));
 app.use("/api", require("./routes/userRoutes"));
 app.use("/api", require("./routes/bookRoutes"));
 app.use("/api", require("./routes/bookRequestRoutes"));
+app.use("/api", require("./routes/sellRequestRoutes"));
 
 
 //test route
