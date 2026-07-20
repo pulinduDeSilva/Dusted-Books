@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 type BookItem = {
@@ -44,32 +44,23 @@ const Books = () => {
     return () => window.clearInterval(timer)
   }, [books.length])
 
-  const visibleBooks = books.length > 0
-    ? [0, 1, 2].map((offset) => books[(activeIndex + offset) % books.length])
-    : []
+  const visibleBooks = useMemo(
+    () => (books.length > 0 ? [0, 1, 2].map((offset) => books[(activeIndex + offset) % books.length]) : []),
+    [books, activeIndex],
+  )
 
   return (
-    <section className="w-full px-3 py-6 sm:px-4 md:px-8 md:py-8">
-      <div className="mb-4 flex items-end justify-between gap-3">
-        <div>
+    <section className="w-full px-3 py-6 sm:px-4 md:px-8 md:py-8 md:mx-auto  lg:max-w-8xl ">
+      <div className=" flex items-center justify-center gap-3 mx-40 my-20">
+        <div className="flex flex-col items-center justify-center">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-400">Preloved Book Shelf</p>
-          <h2 className="text-xl font-bold text-stone-800 dark:text-gray-100 sm:text-2xl">Simple picks for every reader</h2>
+          <h2 className="lg:text-2xl font-semibold text-stone-800 dark:text-gray-100 text-2xl">Simple picks for every reader</h2>
         </div>
-        <div className="flex gap-2">
-          {books.map((book, index) => (
-            <button
-              key={book._id}
-              type="button"
-              onClick={() => setActiveIndex(index)}
-              className={`h-2.5 rounded-full transition-all ${index === activeIndex ? 'w-8 bg-amber-600 dark:bg-amber-500' : 'w-2.5 bg-stone-300 dark:bg-gray-600'}`}
-              aria-label={`Show ${book.title}`}
-            />
-          ))}
-        </div>
+        
       </div>
 
-      <div className="rounded-2xl border border-stone-200 dark:border-gray-700 bg-stone-50 dark:bg-gray-800/50 p-3 sm:p-4">
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="flex align-center justify-center gap-4 sm:gap-6 md:gap-8">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 w-2/3">
           {visibleBooks.map((book) => (
             <article
               key={book._id}
@@ -90,29 +81,21 @@ const Books = () => {
                 </span>
               </div>
 
-              <div className="flex min-h-[220px] items-center justify-center rounded-lg bg-[#f8f3e8] dark:bg-gray-700/50 p-3">
+              <div className="flex min-h-[220px] items-center justify-center rounded-lg  dark:bg-gray-700/50 p-3">
                 <img
                   className="max-h-48 w-full object-contain"
                   src={book.imgUrl}
                   alt={book.title}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
-              <div className="mt-3">
+              <div className="m-3">
                 <p className="text-sm font-semibold text-stone-800 dark:text-gray-100">{book.title}</p>
                 <p className="mt-1 text-sm text-stone-600 dark:text-gray-400">{book.description || book.condition || 'Good condition copy'}</p>
                 <div className="mt-3 flex items-center justify-between">
                   <span className="text-base font-bold text-amber-700 dark:text-amber-400">Rs. {book.price.toLocaleString('en-IN')}</span>
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.stopPropagation()
-                      navigate(`/books/${book._id}`)
-                    }}
-                    className="rounded-full border border-stone-300 px-3 py-1 text-sm text-stone-700 transition-colors hover:bg-stone-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
-                  >
-                    View
-                  </button>
                 </div>
               </div>
             </article>

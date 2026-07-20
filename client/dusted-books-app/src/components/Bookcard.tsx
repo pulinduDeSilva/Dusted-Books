@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import { useCart } from "../context/cartContext";
@@ -74,13 +74,15 @@ function BookCard({ book }: BookCardProps) {
           handleViewDetails();
         }
       }}
-      className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-[22px] border border-slate-200 bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800 dark:shadow-black/20 dark:hover:shadow-black/40"
+      className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-lg border border-slate-200 bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800 dark:shadow-black/20 dark:hover:shadow-black/40"
     >
-      <div className="relative mb-4 flex h-64 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-amber-50 via-orange-50 to-white dark:from-gray-700 dark:via-gray-750 dark:to-gray-700 p-2">
+      <div className="relative mb-4 flex h-64 items-center justify-center overflow-hidden rounded-lg dark:from-gray-700 dark:via-gray-750 dark:to-gray-700 p-2">
         <img
           src={book.imgUrl || 'https://via.placeholder.com/400x600?text=Dusted+Books'}
           alt={book.title}
           className="h-full w-full object-contain transition duration-300 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
         />
       </div>
 
@@ -90,12 +92,13 @@ function BookCard({ book }: BookCardProps) {
             <h2 className="text-lg font-semibold text-slate-800 dark:text-gray-100">{book.title}</h2>
             <p className="mt-1 text-sm text-slate-500 dark:text-gray-400">By {book.author}</p>
           </div>
-          <span className="rounded-full bg-amber-100 dark:bg-amber-900/40 px-2.5 py-1 text-xs font-semibold text-amber-700 dark:text-amber-300">
-            {formatPrice(book.price)}
-          </span>
+          
         </div>
 
         <p className="mt-3 line-clamp-3 text-sm text-slate-600 dark:text-gray-400">{book.description}</p>
+        <span className="rounded-full dark:bg-amber-900/40 py-1 text-xs font-semibold text-amber-700 dark:text-amber-300">
+            {formatPrice(book.price)}
+          </span>
       </div>
 
       <div className="mt-4 flex flex-wrap gap-3">
@@ -123,4 +126,4 @@ function BookCard({ book }: BookCardProps) {
   );
 }
 
-export default BookCard;
+export default memo(BookCard);

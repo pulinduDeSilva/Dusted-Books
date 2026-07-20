@@ -26,7 +26,6 @@ function MoonIcon() {
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const { user, logout } = useAuth();
   const { cartCount } = useCart();
   const { isDark, toggleTheme } = useTheme();
@@ -34,39 +33,18 @@ function Nav() {
   const dropdownRef = useRef<HTMLLIElement>(null);
   const isCartRoute = location.pathname === "/cart";
 
-  // Detect scroll to add background shadow/opacity
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setAccountDropdownOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   return (
     <nav 
-      className={`fixed top-0 left-0 w-full z-[999] transition-all duration-300 ${
-        scrolled 
-          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b border-amber-900/10 dark:border-gray-700/50 shadow-md py-3" 
-          : "bg-[#fcfaf8]/95 dark:bg-gray-900/90 py-5 shadow-sm"
-      }`}
+      className={`fixed top-0 left-0 z-[999] w-full border-b border-amber-900/10 bg-white backdrop-blur-md transition-all duration-300 dark:border-gray-800 dark:bg-gray-950/80 py-1`}
     >
-      <div className="container flex flex-wrap items-center justify-between mx-auto text-amber-950 dark:text-amber-100 lg:w-[80%] px-6">
+      <div className="flex w-full items-center justify-between px-4  text-amber-950 dark:text-amber-100 sm:px-6 lg:px-8">
         <Link
           to="/"
           className="flex items-center gap-3 mr-4 text-2xl font-bold tracking-wider text-amber-950 dark:text-amber-100 transition-transform hover:scale-105 active:scale-95"
         >
+
+          {/*  
           <span className="flex h-14 w-14 items-center justify-center rounded-full dark:bg-gray-800 dark:border-gray-700 p-0.5">
             <img
               src={logoImage}
@@ -74,7 +52,8 @@ function Nav() {
               className="h-12 w-12 rounded-full object-cover"
             />
           </span>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-900 to-amber-700 dark:from-amber-400 dark:to-amber-300">
+          */}
+          <span className="text-amber-950/60 tracking-tight dark:from-amber-400 dark:to-amber-300 text-lg  ">
             DustedBooks
           </span>
         </Link>
@@ -139,7 +118,7 @@ function Nav() {
 
             <li className="flex items-center">
               <Link
-                to="/browse"
+                to="browse"
                 className="group flex items-center gap-2 text-sm font-medium text-amber-950/70 dark:text-amber-200/70 hover:text-amber-950 dark:hover:text-amber-100 transition-colors py-2 relative"
               >
                 <span>Browse</span>
@@ -169,7 +148,7 @@ function Nav() {
               <>
                 <li className="flex items-center">
                   <Link
-                    to="/cart"
+                    to="cart"
                     className={`relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
                       isCartRoute
                         ? "bg-amber-900/10 text-amber-950 dark:bg-white/10 dark:text-amber-100"
@@ -223,7 +202,7 @@ function Nav() {
                 >
                   <ul className="py-2">
                     <li>
-                      <Link to="/profile" className="flex items-center gap-2 w-full px-5 py-2.5 text-left text-sm text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-700 dark:hover:text-amber-300 transition-colors font-medium">
+                      <Link to="profile" className="flex items-center gap-2 w-full px-5 py-2.5 text-left text-sm text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-700 dark:hover:text-amber-300 transition-colors font-medium">
                         Profile
                       </Link>
                     </li>

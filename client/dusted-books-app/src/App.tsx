@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import { AuthProvider } from "./context/authContext";
+import { AuthProvider, useAuth } from "./context/authContext";
 import { ThemeProvider } from "./context/themeContext";
 import { CartProvider } from "./context/cartContext";
 
@@ -20,6 +20,7 @@ import BookUpload from "./components/admin/book/BookUpload";
 import Browse from "./pages/Browse";
 import Cart from "./pages/Cart";
 import BookDetails from "./pages/BookDetails";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -38,16 +39,32 @@ function App() {
               />
 
               <Route
-                path="/"
+                path="/user"
                 element={
                   <ProtectedRoute>
                     <Home />
                   </ProtectedRoute>
                 }
-              />
+              >
+                <Route
+                  path="home"
+                  element={
+                    <ProtectedRoute>
+                      <HomePage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="cart"
+                  element={
+                    <ProtectedRoute>
+                      <Cart />
+                    </ProtectedRoute>
+                  }
+                />
 
-              <Route
-                path="/browse"
+                <Route
+                path="browse"
                 element={
                   <ProtectedRoute>
                     <Browse />
@@ -56,22 +73,16 @@ function App() {
               />
 
               <Route
-                path="/cart"
-                element={
-                  <ProtectedRoute>
-                    <Cart />
-                  </ProtectedRoute>
-                }
-              />
-
-              <Route
-                path="/books/:id"
+                path="books/:id"
                 element={
                   <ProtectedRoute>
                     <BookDetails />
                   </ProtectedRoute>
                 }
               />
+              </Route>
+
+              
 
               <Route
                 path="/admin"
@@ -95,13 +106,13 @@ function App() {
 
               <Route path="/unauthorized" element={<Unauthorized />} />
 
-              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="*" element={<Navigate to="/user/home" replace />} />
             </Routes>
           </CartProvider>
         </AuthProvider>
       </BrowserRouter>
     </ThemeProvider>
   );
-}
+}   
 
 export default App;

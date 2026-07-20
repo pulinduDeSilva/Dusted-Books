@@ -2,8 +2,6 @@ function Workflow() {
   return (
     <section className="py-24 sm:py-32 relative overflow-hidden">
       {/* Decorative background blobs */}
-      <div className="absolute top-0 right-0 -mr-20 w-72 h-72 rounded-full bg-zinc-200/50 dark:bg-gray-700/30 blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 -ml-20 w-96 h-96 rounded-full bg-zinc-200/50 dark:bg-gray-700/30 blur-3xl pointer-events-none"></div>
 
       <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative z-10">
         
@@ -15,7 +13,7 @@ function Workflow() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-900 dark:text-gray-100 tracking-tight mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-zinc-900 dark:text-gray-100 tracking-tight mb-6 leading-tight">
               Read Again.
             </h2>
             <p className="text-lg md:text-xl text-zinc-600 dark:text-gray-400 leading-relaxed max-w-2xl font-medium">

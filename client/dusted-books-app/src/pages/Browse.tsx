@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import BookCard from '../components/Bookcard';
-import Nav from '../components/Nav';
 
 type Book = {
   _id: string;
@@ -122,25 +121,26 @@ function Browse() {
   const activeSortLabel = sortOptions.find((o) => o.value === sortBy)?.label ?? 'Featured';
 
   return (
-    <div className="min-h-screen bg-[#fcfaf8] dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white">
-      <Nav />
+    <div className="min-h-screen bg-white  dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white">
 
       <main className="mx-auto max-w-7xl px-4 pb-24 pt-28 sm:px-6 lg:px-8 lg:pt-32">
 
         {/* ── Hero Banner ── */}
-        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#4a3625] via-[#3a2818] to-[#2a1c10] dark:from-gray-800 dark:via-gray-850 dark:to-gray-900 p-8 text-white shadow-2xl shadow-amber-900/20 dark:shadow-black/40 sm:p-12 lg:p-16 isolate">
-          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-amber-500/10 blur-3xl mix-blend-screen pointer-events-none" />
-          <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-amber-600/10 blur-3xl mix-blend-screen pointer-events-none" />
+        <section className="relative overflow-hidden rounded-3xl dark:from-gray-800 dark:via-gray-850 dark:to-gray-900 p-8 text-white dark:shadow-black/40 sm:p-12 lg:p-16 isolate">
+          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full  blur-3xl mix-blend-screen pointer-events-none" />
+          <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full  blur-3xl mix-blend-screen pointer-events-none" />
 
           <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
+              {/* 
               <p className="mb-4 inline-flex items-center rounded-full border border-amber-300/20 bg-amber-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber-200 backdrop-blur-md">
                 Discover your next favorite read
               </p>
-              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-amber-50 to-amber-200">
-                Browse Books
+              */}
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-amber-950/60">
+                Browse Books.
               </h1>
-              <p className="mt-4 text-base text-amber-200/70 sm:text-lg max-w-xl leading-relaxed">
+              <p className="mt-4 text-base text-amber-200/70 sm:text-lg max-w-xl leading-relaxed text-black/90">
                 Explore a curated collection of inspiring stories, practical guides, and timeless classics handpicked for you.
               </p>
             </div>
@@ -345,7 +345,7 @@ function Browse() {
           )}
 
           {!loading && !error && filteredBooks.length > 0 && (
-            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-3">
               {filteredBooks.map((book) => (
                 <BookCard key={book._id} book={book} />
               ))}
