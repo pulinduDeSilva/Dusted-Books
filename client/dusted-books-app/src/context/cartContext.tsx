@@ -23,7 +23,20 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | null>(null);
 
-const getStorageKey = (userId: string) => `dustedbooks-cart-${userId}`;
+const GUEST_STORAGE_KEY = "dustedbooks-cart-guest";
+
+const getStorageKey = (userId?: string) =>
+  userId ? `dustedbooks-cart-${userId}` : GUEST_STORAGE_KEY;
+
+const readCart = (key: string): CartItem[] => {
+  const stored = localStorage.getItem(key);
+  if (!stored) return [];
+  try {
+    return JSON.parse(stored);
+  } catch {
+    return [];
+  }
+};
 
 interface CartProviderProps {
   children: ReactNode;
@@ -36,30 +49,35 @@ export function CartProvider({ children }: CartProviderProps) {
 
   useEffect(() => {
     if (!user) {
-      setCartItems([]);
+      // Guests keep a cart too, under a shared guest key
+      setCartItems(readCart(GUEST_STORAGE_KEY));
       setIsLoaded(true);
       return;
     }
 
-    const stored = localStorage.getItem(getStorageKey(user.id));
+    // On login, merge any guest cart into the user's cart
+    const userCart = readCart(getStorageKey(user.id));
+    const guestCart = readCart(GUEST_STORAGE_KEY);
+    const merged = [
+      ...userCart,
+      ...guestCart.filter(
+        (guestItem) => !userCart.some((item) => item._id === guestItem._id),
+      ),
+    ];
 
-    if (stored) {
-      try {
-        setCartItems(JSON.parse(stored));
-      } catch {
-        setCartItems([]);
-      }
-    } else {
-      setCartItems([]);
+    if (guestCart.length > 0) {
+      localStorage.removeItem(GUEST_STORAGE_KEY);
+      localStorage.setItem(getStorageKey(user.id), JSON.stringify(merged));
     }
 
+    setCartItems(merged);
     setIsLoaded(true);
   }, [user]);
 
   useEffect(() => {
-    if (!user) return;
-    localStorage.setItem(getStorageKey(user.id), JSON.stringify(cartItems));
-  }, [cartItems, user]);
+    if (!isLoaded) return;
+    localStorage.setItem(getStorageKey(user?.id), JSON.stringify(cartItems));
+  }, [cartItems, user, isLoaded]);
 
   const addToCart = (item: Omit<CartItem, "quantity">) => {
     setCartItems((prev) => {
