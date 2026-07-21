@@ -3,7 +3,7 @@ const Book = require("../model/book");
 
 exports.getAllBooks = async (req, res) => {
   try {
-    const books = await Book.find().sort({ createdAt: -1 });
+    const books = await Book.find().sort({ createdAt: -1 }).lean();
     res.status(200).json(books);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -12,7 +12,7 @@ exports.getAllBooks = async (req, res) => {
 
 exports.getBookById = async (req, res) => {
   try {
-    const book = await Book.findById(req.params.id);
+    const book = await Book.findById(req.params.id).lean();
 
     if (!book) {
       return res.status(404).json({ message: 'Book not found' });
