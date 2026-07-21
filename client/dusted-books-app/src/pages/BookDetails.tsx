@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Nav from '../components/Nav';
-import { useAuth } from '../context/authContext';
 import { useCart } from '../context/cartContext';
 
 type Book = {
@@ -25,7 +24,6 @@ const formatPrice = (price: number) =>
 function BookDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { user } = useAuth();
   const { addToCart, cartItems } = useCart();
   const [book, setBook] = useState<Book | null>(null);
   const [loading, setLoading] = useState(true);
@@ -66,11 +64,6 @@ function BookDetails() {
   );
 
   const handleAddToCart = () => {
-    if (!user) {
-      navigate('/login', { state: { from: `/books/${id}` } });
-      return;
-    }
-
     if (!book) {
       return;
     }
@@ -87,11 +80,6 @@ function BookDetails() {
   };
 
   const handleBuy = () => {
-    if (!user) {
-      navigate('/login', { state: { from: `/books/${id}` } });
-      return;
-    }
-
     if (!book) {
       return;
     }
