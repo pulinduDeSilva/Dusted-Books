@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import roles from "../enums/roles";
 import { useAuth } from "../context/authContext";
 import { useTheme } from "../context/themeContext";
+
+type AuthLocationState = {
+  from?: string;
+  signupSuccess?: boolean;
+  email?: string;
+} | null;
 
 function AuthPage() {
   const navigate = useNavigate();
@@ -11,21 +17,65 @@ function AuthPage() {
   const { isDark, toggleTheme } = useTheme();
   const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
-  const from = (location.state as { from?: string } | null)?.from || "/";
-  const [isLogin, setIsLogin] = useState(true);
+  const locationState = location.state as AuthLocationState;
+  const from = locationState?.from || "/";
+  // Mode is driven by the URL: /signup vs /login
+  const isLogin = location.pathname !== "/signup";
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    email: locationState?.email || "",
     password: "",
     confirmPassword: "",
   });
 
-  const [message, setMessage] = useState({ type: "", text: "" });
+  const [message, setMessage] = useState(() =>
+    locationState?.signupSuccess
+      ? {
+          type: "success",
+          text: "Account created successfully! Please sign in below.",
+        }
+      : { type: "", text: "" },
+  );
+
+  // Reset transient UI when switching between /login and /signup
+  useEffect(() => {
+    setShowPassword(false);
+    setShowConfirmPassword(false);
+
+    if (locationState?.signupSuccess && isLogin) {
+      setMessage({
+        type: "success",
+        text: "Account created successfully! Please sign in below.",
+      });
+      if (locationState.email) {
+        setFormData((prev) => ({
+          ...prev,
+          name: "",
+          email: locationState.email || prev.email,
+          password: "",
+          confirmPassword: "",
+        }));
+      }
+      // Drop one-time flags so a refresh does not re-show the banner
+      navigate("/login", { replace: true, state: { from } });
+      return;
+    }
+
+    setMessage({ type: "", text: "" });
+  }, [location.pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const switchAuthMode = () => {
+    setMessage({ type: "", text: "" });
+    navigate(isLogin ? "/signup" : "/login", {
+      state: { from },
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -77,19 +127,14 @@ function AuthPage() {
         await refreshUser();
         navigate(from, { replace: true });
       } else {
-        // 2. If it was a signup, keep them here so they can see success and log in
-        setMessage({
-          type: "success",
-          text: "Account created successfully! Please sign in below.",
-        });
-        setIsLogin(true); // Switch view to login form
-
-        // Clear registration fields except email for convenience
-        setFormData({
-          name: "",
-          email: formData.email,
-          password: "",
-          confirmPassword: "",
+        // After signup, send user to the dedicated login path
+        navigate("/login", {
+          replace: true,
+          state: {
+            from,
+            signupSuccess: true,
+            email: formData.email,
+          },
         });
       }
     } catch (err) {
@@ -291,10 +336,7 @@ function AuthPage() {
                 : "Already have an account? "}
               <button
                 type="button"
-                onClick={() => {
-                  setIsLogin(!isLogin);
-                  setMessage({ type: "", text: "" });
-                }}
+                onClick={switchAuthMode}
                 className="font-semibold text-amber-700 hover:underline dark:text-amber-400 bg-transparent border-none cursor-pointer"
               >
                 {isLogin ? "Sign up" : "Log in"}
