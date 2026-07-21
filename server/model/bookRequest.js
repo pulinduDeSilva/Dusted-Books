@@ -43,4 +43,7 @@ const bookRequestSchema = new mongoose.Schema(
   { collection: "bookRequests", timestamps: true }
 );
 
+// Customers look up their own requests, newest first
+bookRequestSchema.index({ userId: 1, createdAt: -1 });
+
 module.exports = mongoose.model("BookRequest", bookRequestSchema);
