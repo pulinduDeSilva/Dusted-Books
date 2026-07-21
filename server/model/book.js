@@ -35,6 +35,11 @@ const bookSchema = new mongoose.Schema({
         required: true
     }
 
-}, { collection: "books" });
+}, { collection: "books", timestamps: true });
+
+// Common browse/query patterns
+bookSchema.index({ createdAt: -1 });
+bookSchema.index({ category: 1 });
+bookSchema.index({ title: 1 });
 
 module.exports = mongoose.model("Book", bookSchema);
