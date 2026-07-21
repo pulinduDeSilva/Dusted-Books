@@ -67,13 +67,11 @@ function Nav() {
           to="/"
           className="flex items-center gap-3 mr-4 text-2xl font-bold tracking-wider text-amber-950 dark:text-amber-100 transition-transform hover:scale-105 active:scale-95"
         >
-          <span className="flex h-14 w-14 items-center justify-center rounded-full dark:bg-gray-800 dark:border-gray-700 p-0.5">
-            <img
-              src={logoImage}
-              alt="DustedBooks logo"
-              className="h-12 w-12 rounded-full object-cover"
-            />
-          </span>
+          <img
+            src={logoImage}
+            alt="DustedBooks logo"
+            className="h-12 w-12 object-contain"
+          />
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-900 to-amber-700 dark:from-amber-400 dark:to-amber-300">
             DustedBooks
           </span>
@@ -177,42 +175,41 @@ function Nav() {
               </li>
             )}
 
+            <li className="flex items-center">
+              <Link
+                to="/cart"
+                className={`relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                  isCartRoute
+                    ? "bg-amber-900/10 text-amber-950 dark:bg-white/10 dark:text-amber-100"
+                    : "text-amber-950/70 hover:bg-amber-900/10 hover:text-amber-950 dark:text-amber-200/70 dark:hover:bg-white/10 dark:hover:text-amber-100"
+                }`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 0 0 6.6 17H19m-12 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm11 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                </svg>
+                Cart
+                {cartCount > 0 && (
+                  <span className="inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-full bg-amber-700 px-2 text-xs font-semibold text-white">
+                    {cartCount}
+                  </span>
+                )}
+              </Link>
+            </li>
+
+            {/* Theme toggle – desktop (in nav list) */}
+            <li className="hidden lg:flex items-center">
+              <button
+                type="button"
+                onClick={toggleTheme}
+                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+                className="flex h-9 w-9 items-center justify-center rounded-full text-amber-950/70 dark:text-amber-200/70 hover:text-amber-950 dark:hover:text-amber-100 hover:bg-amber-900/10 dark:hover:bg-white/10 transition-all"
+              >
+                {isDark ? <SunIcon /> : <MoonIcon />}
+              </button>
+            </li>
+
             {user ? (
-              <>
-                <li className="flex items-center">
-                  <Link
-                    to="/cart"
-                    className={`relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
-                      isCartRoute
-                        ? "bg-amber-900/10 text-amber-950 dark:bg-white/10 dark:text-amber-100"
-                        : "text-amber-950/70 hover:bg-amber-900/10 hover:text-amber-950 dark:text-amber-200/70 dark:hover:bg-white/10 dark:hover:text-amber-100"
-                    }`}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 0 0 6.6 17H19m-12 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm11 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                    </svg>
-                    Cart
-                    {cartCount > 0 && (
-                      <span className="inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-full bg-amber-700 px-2 text-xs font-semibold text-white">
-                        {cartCount}
-                      </span>
-                    )}
-                  </Link>
-                </li>
-
-                {/* Theme toggle – desktop (in nav list) */}
-                <li className="hidden lg:flex items-center">
-                  <button
-                    type="button"
-                    onClick={toggleTheme}
-                    aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-amber-950/70 dark:text-amber-200/70 hover:text-amber-950 dark:hover:text-amber-100 hover:bg-amber-900/10 dark:hover:bg-white/10 transition-all"
-                  >
-                    {isDark ? <SunIcon /> : <MoonIcon />}
-                  </button>
-                </li>
-
-                <li className="relative flex flex-col lg:items-center" ref={dropdownRef}>
+              <li className="relative flex flex-col lg:items-center" ref={dropdownRef}>
                   <button 
                     className="group flex items-center gap-2 cursor-pointer text-sm font-medium text-amber-950/70 dark:text-amber-200/70 hover:text-amber-950 dark:hover:text-amber-100 transition-colors py-2 relative" 
                     onClick={() => setAccountDropdownOpen(!accountDropdownOpen)}
@@ -248,7 +245,6 @@ function Nav() {
                   </ul>
                 </div>
               </li>
-            </>
             ) : (
               <li className="flex items-center mt-2 lg:mt-0 lg:ml-2">
                 <Link to="/login" className="px-6 py-2 bg-amber-600 hover:bg-amber-700 dark:bg-amber-700 dark:hover:bg-amber-600 text-white text-sm font-semibold rounded-full transition-all hover:scale-105 shadow-sm">
