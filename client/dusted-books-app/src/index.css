@@ -18,3 +18,92 @@ html, body, #root {
   height: 100%;
   overflow-x: hidden;
 }
+
+/* ── Customer Hero slideshow ── */
+@keyframes hero-kb-0 {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to   { transform: scale(1.15) translate3d(2%, -1%, 0); }
+}
+@keyframes hero-kb-1 {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to   { transform: scale(1.12) translate3d(-2%, -1%, 0); }
+}
+@keyframes hero-kb-2 {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to   { transform: scale(1.1) translate3d(-1%, -2%, 0); }
+}
+@keyframes hero-kb-3 {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to   { transform: scale(1.12) translate3d(-2%, 1%, 0); }
+}
+@keyframes hero-kb-4 {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to   { transform: scale(1.14) translate3d(1%, 2%, 0); }
+}
+@keyframes hero-kb-5 {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to   { transform: scale(1.12) translate3d(1%, -1%, 0); }
+}
+
+.hero-kb-0,
+.hero-kb-1,
+.hero-kb-2,
+.hero-kb-3,
+.hero-kb-4,
+.hero-kb-5 {
+  will-change: transform;
+  backface-visibility: hidden;
+  animation-duration: 6.9s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.hero-kb-0 { animation-name: hero-kb-0; }
+.hero-kb-1 { animation-name: hero-kb-1; }
+.hero-kb-2 { animation-name: hero-kb-2; }
+.hero-kb-3 { animation-name: hero-kb-3; }
+.hero-kb-4 { animation-name: hero-kb-4; }
+.hero-kb-5 { animation-name: hero-kb-5; }
+
+@keyframes hero-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.hero-progress-fill {
+  transform-origin: left center;
+  animation: hero-progress var(--hero-slide-ms, 6500ms) linear forwards;
+}
+
+@keyframes hero-dust {
+  0%, 100% { opacity: 0.25; transform: translateY(0); }
+  50%      { opacity: 0.7;  transform: translateY(-6px); }
+}
+
+.hero-dust {
+  animation: hero-dust 3.2s ease-in-out infinite;
+}
+
+@keyframes hero-scroll-cue {
+  0%, 100% { transform: translateY(0); opacity: 0.55; }
+  50%      { transform: translateY(4px); opacity: 1; }
+}
+
+.hero-scroll-cue {
+  animation: hero-scroll-cue 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-kb-0,
+  .hero-kb-1,
+  .hero-kb-2,
+  .hero-kb-3,
+  .hero-kb-4,
+  .hero-kb-5,
+  .hero-progress-fill,
+  .hero-dust,
+  .hero-scroll-cue {
+    animation: none !important;
+    will-change: auto;
+  }
+}
