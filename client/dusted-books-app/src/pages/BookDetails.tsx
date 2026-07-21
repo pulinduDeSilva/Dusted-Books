@@ -133,8 +133,8 @@ function BookDetails() {
             <p className="text-lg font-semibold text-amber-700 dark:text-amber-300">{error || 'Book not found.'}</p>
           </div>
         ) : (
-          <section className="grid gap-6 rounded-3xl border border-stone-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900 lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
-            <div className="flex items-center justify-center rounded-3xl bg-gradient-to-br from-amber-50 via-orange-50 to-white p-4 dark:from-gray-800 dark:via-gray-750 dark:to-gray-800">
+          <section className="grid gap-6 rounded-3xl border border-stone-200/70 bg-white p-6  lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
+            <div className="flex items-center justify-center rounded-3xl bg-gradient-to-br from-amber-50 via-orange-50/30 to-white p-4 dark:from-gray-800 dark:via-gray-750 dark:to-gray-800">
               <img
                 src={book.imgUrl || 'https://via.placeholder.com/400x600?text=Dusted+Books'}
                 alt={book.title}
@@ -152,19 +152,19 @@ function BookDetails() {
                   )) || <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">Featured</span>}
                 </div>
 
-                <h1 className="text-3xl font-bold text-stone-900 dark:text-gray-50">{book.title}</h1>
+                <h1 className="text-3xl font-semibold text-stone-900 dark:text-gray-50">{book.title}</h1>
                 <p className="mt-2 text-lg text-stone-600 dark:text-gray-400">by {book.author}</p>
                 <p className="mt-4 text-base leading-7 text-stone-700 dark:text-gray-300">{book.description}</p>
-                <div className="mt-6 rounded-2xl border border-stone-200 bg-stone-50 p-4 dark:border-gray-700 dark:bg-gray-800/70">
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone-500 dark:text-gray-400">Condition</p>
-                  <p className="mt-1 text-base font-medium text-stone-800 dark:text-gray-200">{book.condition || 'Good condition copy'}</p>
+                <div className="inline-block mt-4 rounded-2xl border border-stone-200 bg-stone-50 px-4 py-1 dark:border-gray-700 dark:bg-gray-800/70">
+                  <p className="inline-block mr-3 text-sm font-semibold uppercase tracking-[0.1em] text-stone-500 dark:text-gray-400">Condition</p>
+                  <p className="inline-block  text-base font-medium text-stone-800 dark:text-gray-200">{book.condition || 'Good condition copy'}</p>
                 </div>
               </div>
 
               <div className="mt-8 flex flex-col gap-4">
-                <div className="flex items-center justify-between rounded-2xl bg-amber-50 px-4 py-3 dark:bg-amber-900/20">
-                  <span className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700 dark:text-amber-300">Price</span>
-                  <span className="text-2xl font-bold text-amber-700 dark:text-amber-300">{formatPrice(book.price)}</span>
+                <div className=" flex items-center justify-between rounded-2xl px-4 py-3 dark:bg-amber-900/20">
+                  <span className="text-lg font-semibold uppercases tracking-[1px] text-amber-700 dark:text-amber-300">Price</span>
+                  <span className="text-lg font-semibold text-amber-700 dark:text-amber-300">{formatPrice(book.price)}</span>
                 </div>
 
                 <div className="flex flex-wrap gap-3">

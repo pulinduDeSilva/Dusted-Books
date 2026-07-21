@@ -21,6 +21,7 @@ import Browse from "./pages/Browse";
 import Cart from "./pages/Cart";
 import BookDetails from "./pages/BookDetails";
 import HomePage from "./pages/HomePage";
+import Account from "./pages/CustomerLayout/Account";
 
 function App() {
   return (
@@ -64,25 +65,34 @@ function App() {
                 />
 
                 <Route
-                path="browse"
-                element={
-                  <ProtectedRoute>
-                    <Browse />
-                  </ProtectedRoute>
-                }
-              />
+                  path="browse"
+                  element={
+                    <ProtectedRoute>
+                      <Browse />
+                    </ProtectedRoute>
+                  }
+                />
 
-              <Route
-                path="books/:id"
-                element={
-                  <ProtectedRoute>
-                    <BookDetails />
-                  </ProtectedRoute>
-                }
-              />
+                <Route
+                  path="books/:id"
+                  element={
+                    <ProtectedRoute>
+                      <BookDetails />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="account"
+                  element={
+                    <ProtectedRoute>
+                      <Account />
+                    </ProtectedRoute>
+                  }
+                />
+
               </Route>
 
-              
+
 
               <Route
                 path="/admin"
@@ -113,6 +123,6 @@ function App() {
       </BrowserRouter>
     </ThemeProvider>
   );
-}   
+}
 
 export default App;

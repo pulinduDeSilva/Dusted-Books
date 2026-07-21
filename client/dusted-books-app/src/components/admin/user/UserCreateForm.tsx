@@ -50,8 +50,8 @@ function userCreateForm() {
 
   return (
     <>
-      <form className="max-w-md m-5 lg:mt-15" onSubmit={handleSubmit}>
-        <h1 className="text-2xl font-bold mb-10">Create User</h1>
+      <form className="max-w-md m-5 lg:mt-20 mx-auto" onSubmit={handleSubmit}>
+        <h1 className="text-2xl text-slate-700 font-bold mb-10">Create User</h1>
         <div className="m-5">
           {error && <p className="text-red-500">{error}</p>}
           {success && <p className="text-green-500">{success}</p>}

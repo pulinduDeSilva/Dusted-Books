@@ -60,7 +60,7 @@ function BookCard({ book }: BookCardProps) {
   }, [user, navigate, fromPath, addToCart, book, itemInCart]);
 
   const handleViewDetails = useCallback(() => {
-    navigate(`/books/${book._id}`);
+    navigate(`/user/books/${book._id}`);
   }, [book._id, navigate]);
 
   return (

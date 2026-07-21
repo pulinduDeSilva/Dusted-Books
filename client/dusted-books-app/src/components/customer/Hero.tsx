@@ -1,5 +1,5 @@
 import HeroImg from "../../assets/hero-imgs/hero-img.jpg";
-import { Link } from "react-router-dom";
+import Search from "./Search";
 
 function Hero() {
   return (
@@ -14,12 +14,13 @@ function Hero() {
         decoding="async"
       />
       
-      <div className="relative z-10 mt-6 flex min-w-[80%] flex-col items-center justify-center gap-4 md:flex-row md:justify-between md:px-20">
-        <aside className="hero-left">
-          <h1 className=" font-semibold text-7xl md:text-9xl text-white">
+      <div className=" z-10 mt-6 flex min-w-[80%] items-center justify-center gap-4 md:flex-row md:px-40 md:justify-between w-[90%]">
+        <aside className="hero-left flex items-center justify-between gap-4 mb-15 md:mb-0 w-full">
+          <h1 className=" font-semibold text-7xl md:text-9xl text-amber-50 anti-aliased">
             Buy.Sell. <br />
-            Books <br />
+            Books.
           </h1>
+
         </aside>
 
         

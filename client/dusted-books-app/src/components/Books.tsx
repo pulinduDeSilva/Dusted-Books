@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Search from './customer/Search'
 
 type BookItem = {
   _id: string
@@ -51,20 +52,22 @@ const Books = () => {
 
   return (
     <section className="w-full px-3 py-6 sm:px-4 md:px-8 md:py-8 md:mx-auto  lg:max-w-8xl ">
-      <div className=" flex items-center justify-center gap-3 mx-40 my-20">
+      <Search />
+
+      <div className=" flex items-center justify-center gap-3 mx-20 my-20">
         <div className="flex flex-col items-center justify-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-400">Preloved Book Shelf</p>
-          <h2 className="lg:text-2xl font-semibold text-stone-800 dark:text-gray-100 text-2xl">Simple picks for every reader</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-400 inline-block">Preloved Book Shelf</p>
+          <h2 className="lg:text-2xl font-semibold text-stone-800 dark:text-gray-100 text-2xl inline-block">Simple picks for every reader</h2>
         </div>
         
       </div>
 
-      <div className="flex align-center justify-center gap-4 sm:gap-6 md:gap-8">
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 w-2/3">
+      <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 w-full md:w-2/3 mx-3">
           {visibleBooks.map((book) => (
             <article
               key={book._id}
-              onClick={() => navigate(`/books/${book._id}`)}
+              onClick={() => navigate(`/user/books/${book._id}`)}
               onKeyDown={(event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                   event.preventDefault()

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink, useMatch, useLocation } from "react-router-dom";
+import { NavLink, useMatch, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import { useTheme } from "../context/themeContext";
 
@@ -22,6 +22,8 @@ function MoonIcon() {
 }
 
 function NavAdmin() {
+
+  const nav = useNavigate();
   const { user, logout } = useAuth();
   const { isDark, toggleTheme } = useTheme();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -36,17 +38,15 @@ function NavAdmin() {
   }, [location.pathname]);
 
   const linkStyles = ({ isActive }: { isActive: boolean }) =>
-    `block py-2.5 px-4 transition-all duration-200 ${
-      isActive
-        ? "bg-white/40 dark:bg-white/10 font-semibold border-l-4 border-black dark:border-amber-400 text-black dark:text-amber-300"
-        : "hover:bg-white/20 dark:hover:bg-white/10 text-zinc-800 dark:text-zinc-200 border-l-4 border-transparent hover:border-black/30 dark:hover:border-amber-400/50"
+    `block py-2.5 px-4 transition-all duration-200 ${isActive
+      ? "c dark:bg-white/10 bg-white/50 font-medium border-l-4 border-black/75 dark:border-amber-400 text-black dark:text-amber-300"
+      : "hover:bg-olive-500/20 dark:hover:bg-white/10 text-zinc-800 dark:text-zinc-200 border-l-4 border-transparent hover:border-black/30 dark:hover:border-amber-400/50"
     }`;
 
   const subLinkStyles = ({ isActive }: { isActive: boolean }) =>
-    `pl-10 block py-2 px-4 transition-all duration-200 text-sm ${
-      isActive 
-        ? "bg-white/20 dark:bg-white/10 font-medium text-black dark:text-amber-300 border-l-4 border-black/50 dark:border-amber-400" 
-        : "hover:bg-white/10 text-zinc-700 dark:text-zinc-300 border-l-4 border-transparent"
+    `pl-10 block py-2 px-4 transition-all duration-200 text-sm ${isActive
+      ? "bg-white/20 dark:bg-white/10 font-medium text-black dark:text-amber-300 border-l-4 border-black/50 dark:border-amber-400"
+      : "hover:bg-white/10 text-zinc-700 dark:text-zinc-300 border-l-4 border-transparent"
     }`;
 
   return (
@@ -64,13 +64,12 @@ function NavAdmin() {
       </button>
 
       <div
-        className={`nav-admin fixed inset-y-0 left-0 z-40 flex h-screen w-4/5 max-w-[280px] flex-col bg-olive-300 dark:bg-gray-900 text-black dark:text-gray-100 shadow-2xl transition-transform duration-300 ease-in-out xl:w-64 xl:max-w-none xl:translate-x-0 xl:shadow-none ${
-          isMobileOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`nav-admin fixed inset-y-0 left-0 z-40 flex h-screen w-4/5 max-w-[280px] flex-col bg-olive-300 dark:bg-gray-900 text-black dark:text-gray-100 shadow-2xl transition-transform duration-300 ease-in-out xl:w-1/5 xl:max-w-none xl:translate-x-0 xl:shadow-none ${isMobileOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div id="top-nav" className="flex flex-1 flex-col overflow-y-auto">
           <div className="m-4 flex items-center justify-center py-4 border-b border-black/10 dark:border-gray-700">
-            <h1 className="font-bold text-lg tracking-wider dark:text-white">DUSTEDBOOKS <span className="font-light">Admin</span></h1>
+            <h1 className="font-bold antialiased text-lg tracking-wider dark:text-white tracking-tight">DUSTEDBOOKS <span className="font-light">Admin</span></h1>
           </div>
 
           <nav className="flex flex-col py-2">
@@ -106,14 +105,21 @@ function NavAdmin() {
           </nav>
         </div>
 
+        <div className="flex items-center m-4  justify-center gap-4 text-black/60">
+          <button className="cursor-pointer p-2 hover:bg-white/70 bg-black/10 border-1 border-black/5 rounded-lg w-full shadow-[0_0px_6px_rgba(0,0,0,0.1)]" onClick={() => nav("/")}>
+            <h1>User View</h1>
+          </button>
+        </div>
+
         <div id="btm-nav" className="mt-auto flex flex-col gap-4 bg-olive-500 dark:bg-gray-800 p-5 xl:flex-row xl:items-center xl:justify-between xl:gap-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] dark:shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.3)]">
+
           <div className="flex items-center gap-3 text-white min-w-0">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white dark:bg-gray-700 shadow-inner">
               <span className="font-bold text-lg text-olive-600 dark:text-amber-400">
                 {user?.email?.charAt(0).toUpperCase()}
               </span>
             </div>
-            
+
             <div className="min-w-0 flex-1">
               <h1 className="truncate text-sm font-semibold w-full" title={user?.email}>{user?.email}</h1>
               <h1 className="text-xs capitalize text-white/80 dark:text-gray-400 font-medium tracking-wide">{user?.role || "Admin"}</h1>
