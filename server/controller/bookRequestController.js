@@ -29,7 +29,7 @@ exports.createRequest = async (req, res) => {
 // GET /api/book-requests  — admin gets all requests
 exports.getAllRequests = async (req, res) => {
   try {
-    const requests = await BookRequest.find().sort({ createdAt: -1 });
+    const requests = await BookRequest.find().sort({ createdAt: -1 }).lean();
     res.status(200).json(requests);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -39,9 +39,11 @@ exports.getAllRequests = async (req, res) => {
 // GET /api/book-requests/my  — customer gets their own requests
 exports.getMyRequests = async (req, res) => {
   try {
-    const requests = await BookRequest.find({ userId: req.user.id }).sort({
-      createdAt: -1,
-    });
+    const requests = await BookRequest.find({ userId: req.user.id })
+      .sort({
+        createdAt: -1,
+      })
+      .lean();
     res.status(200).json(requests);
   } catch (err) {
     res.status(500).json({ message: err.message });
