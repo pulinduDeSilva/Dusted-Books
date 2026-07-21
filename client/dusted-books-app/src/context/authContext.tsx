@@ -5,7 +5,7 @@ import {
   useContext,
   type ReactNode,
 } from "react";
-import { getMe } from "../service/Auth";
+import { getMe, logoutRequest } from "../service/Auth";
 
 export interface UserDef {
   id: string;
@@ -17,7 +17,7 @@ interface AuthContextType {
   user: UserDef | null;
   loading: boolean;
   refreshUser: () => Promise<void>;
-  logout: () => void;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -34,16 +34,24 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       const data = await getMe();
 
-      setUser(data);
-    } catch (error) {
+      setUser(data as UserDef);
+    } catch {
+      // Not authenticated or network failure — clear any stale state
       setUser(null);
     } finally {
       setLoading(false);
     }
   };
 
-  const logout = () => {
-    setUser(null);
+  const logout = async () => {
+    try {
+      // Clear the httpOnly cookie server-side; the client can't remove it itself
+      await logoutRequest();
+    } catch {
+      // Even if the request fails, drop local state so the UI logs out
+    } finally {
+      setUser(null);
+    }
   };
 
   useEffect(() => {
@@ -61,7 +69,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     >
       {children}
     </AuthContext.Provider>
-  )
+  );
 }
 
 export function useAuth() {
