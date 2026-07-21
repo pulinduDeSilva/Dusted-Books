@@ -1,6 +1,5 @@
 import { useCallback } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/authContext";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/cartContext";
 
 type Book = {
@@ -25,39 +24,24 @@ const formatPrice = (price: number) =>
   }).format(price);
 
 function BookCard({ book }: BookCardProps) {
-  const { user } = useAuth();
   const { addToCart, cartItems } = useCart();
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const fromPath = (location.state as { from?: string } | null)?.from || "/browse";
 
   const handleAddToCart = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
-
-    if (!user) {
-      navigate("/login", { state: { from: fromPath } });
-      return;
-    }
-
     addToCart(book);
-  }, [user, navigate, fromPath, addToCart, book]);
+  }, [addToCart, book]);
 
   const itemInCart = cartItems.some((cartItem) => cartItem._id === book._id);
 
   const handleBuy = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
 
-    if (!user) {
-      navigate("/login", { state: { from: fromPath } });
-      return;
-    }
-
     if (!itemInCart) {
       addToCart(book);
     }
     navigate("/cart");
-  }, [user, navigate, fromPath, addToCart, book, itemInCart]);
+  }, [navigate, addToCart, book, itemInCart]);
 
   const handleViewDetails = useCallback(() => {
     navigate(`/books/${book._id}`);
