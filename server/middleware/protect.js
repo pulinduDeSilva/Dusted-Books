@@ -13,9 +13,14 @@ const protect = (req, res, next)=> {
         );
 
         req.user = decoded;
-        
+
         next();
     }catch (error) {
+        if (error.name === "TokenExpiredError") {
+            return res.status(401).json({
+                message: "Token expired. Please log in again."
+            });
+        }
         return res.status(401).json({
             message: "Token is invalid."
         });
