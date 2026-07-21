@@ -106,7 +106,7 @@ exports.createSellRequest = async (req, res) => {
 // GET /api/sell-requests/my  — customer
 exports.getMySellRequests = async (req, res) => {
   try {
-    const requests = await SellRequest.find({ userId: req.user.id }).sort({ createdAt: -1 });
+    const requests = await SellRequest.find({ userId: req.user.id }).sort({ createdAt: -1 }).lean();
     res.status(200).json(requests);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -116,7 +116,7 @@ exports.getMySellRequests = async (req, res) => {
 // GET /api/sell-requests  — admin
 exports.getAllSellRequests = async (req, res) => {
   try {
-    const requests = await SellRequest.find().sort({ createdAt: -1 });
+    const requests = await SellRequest.find().sort({ createdAt: -1 }).lean();
     res.status(200).json(requests);
   } catch (err) {
     res.status(500).json({ message: err.message });
