@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Workflow from "../../components/customer/Workflow";
 import Hero from "../../components/customer/Hero";
 import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
@@ -37,6 +38,7 @@ function Home() {
             <Books />
             <Workflow />
           </section>
+        <Footer />
       </div>
     </div>
   );
