@@ -2,21 +2,34 @@ const user = require("../model/user");
 const bcrypt = require("bcryptjs");
 const generateToken = require("../util/jwtGenerate");
 
-
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 exports.registerUser = async (req, res) => {
     try {
-        const { name, email, password, role } = req.body;
+        let { name, email, password, role } = req.body;
 
-        const salt = await bcrypt.genSalt(10);
-        const hashedpassword = await bcrypt.hash(password, salt); //password hashing
+        name = typeof name === "string" ? name.trim() : "";
+        email = typeof email === "string" ? email.trim().toLowerCase() : "";
+        password = typeof password === "string" ? password : "";
+
+        if (name.length < 2 || name.length > 60) {
+            return res.status(400).json({ message: "Name must be between 2 and 60 characters." });
+        }
+        if (!EMAIL_REGEX.test(email)) {
+            return res.status(400).json({ message: "Please provide a valid email address." });
+        }
+        if (password.length < 8) {
+            return res.status(400).json({ message: "Password must be at least 8 characters." });
+        }
 
         // Check if user with the same email already exists
-        const existingUser = await user.findOne({ email: req.body.email });
+        const existingUser = await user.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: "User with this email already exists" });
         }
 
+        const salt = await bcrypt.genSalt(10);
+        const hashedpassword = await bcrypt.hash(password, salt); //password hashing
 
         const newUser = new user({ name, email, password: hashedpassword, role });
         await newUser.save();
@@ -28,9 +41,18 @@ exports.registerUser = async (req, res) => {
 
 exports.loginUser = async (req, res) => {
     try {
-        const {email, password} = req.body;
-        
-        const foundUser = await user.findOne({email: req.body.email});
+        let { email, password } = req.body;
+
+        email = typeof email === "string" ? email.trim().toLowerCase() : "";
+        password = typeof password === "string" ? password : "";
+
+        if (!email || !password) {
+            return res.status(400).json({
+                message: "Email and password are required."
+            });
+        }
+
+        const foundUser = await user.findOne({ email });
 
         if(!foundUser) {
             return res.status(401).json({
@@ -59,4 +81,13 @@ exports.loginUser = async (req, res) => {
             message: error.message
         })
     }
+};
+
+exports.logoutUser = (req, res) => {
+    res.clearCookie("token", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+    });
+    return res.status(200).json({ message: "Logged out successfully" });
 };
