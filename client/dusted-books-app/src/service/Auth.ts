@@ -1,7 +1,9 @@
-export const getMe = async () => {
-  const res = await fetch("http://localhost:5000/api/me", {
-    credentials: "include",
-  });
+import { apiFetch } from "./apiClient";
 
-  return await res.json();
+export const getMe = async () => {
+  return apiFetch("/me");
+};
+
+export const logoutRequest = async () => {
+  return apiFetch("/users/logout", { method: "POST" });
 };
