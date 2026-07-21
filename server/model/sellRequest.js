@@ -87,4 +87,7 @@ const sellRequestSchema = new mongoose.Schema(
   { collection: "sellRequests", timestamps: true }
 );
 
+// Customers look up their own sell requests, newest first
+sellRequestSchema.index({ userId: 1, createdAt: -1 });
+
 module.exports = mongoose.model("SellRequest", sellRequestSchema);
