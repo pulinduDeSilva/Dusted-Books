@@ -49,7 +49,7 @@ const Books = () => {
     : []
 
   return (
-    <section className="w-full px-3 py-6 sm:px-4 md:px-8 md:py-8">
+    <section id="books" className="w-full px-3 py-6 sm:px-4 md:px-8 md:py-8">
       <div className="mb-4 flex items-end justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-400">Preloved Book Shelf</p>
