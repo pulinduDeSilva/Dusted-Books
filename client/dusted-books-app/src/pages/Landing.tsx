@@ -334,13 +334,13 @@ export default function Landing() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#fcfaf8] dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white overflow-x-hidden">
+    <div className="min-h-screen bg-paper dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white overflow-x-hidden">
       {/* ── Navbar ── */}
       <nav
         className={`fixed top-0 left-0 right-0 z-[999] transition-all duration-300 ${
           scrolled
-            ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b border-amber-900/10 dark:border-gray-700/50 shadow-md py-2.5"
-            : "bg-gradient-to-b from-black/50 to-transparent py-4"
+            ? "bg-paper-elevated/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b border-amber-900/10 dark:border-gray-700/50 shadow-md py-2.5"
+            : "bg-gradient-to-b from-shelf-deep/55 to-transparent py-4"
         }`}
       >
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 sm:px-6">
@@ -433,9 +433,9 @@ export default function Landing() {
         </div>
 
         {/* Warm paper / amber overlays for second-hand book mood */}
-        <div className="absolute inset-0 z-[2] bg-gradient-to-b from-[#2a1c10]/75 via-[#3a2818]/55 to-[#1a120c]/80" />
+        <div className="absolute inset-0 z-[2] bg-gradient-to-b from-shelf-deep/75 via-shelf/55 to-shelf-deep/80" />
         <div className="absolute inset-0 z-[2] bg-gradient-to-tr from-amber-900/25 via-transparent to-orange-900/15" />
-        <div className="absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#1a120c]/70 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-shelf-deep/70 to-transparent" />
 
         {/* Soft floating dust motes */}
         <div className="pointer-events-none absolute inset-0 z-[3] overflow-hidden" aria-hidden="true">
@@ -500,7 +500,7 @@ export default function Landing() {
 
       {/* ── Stats strip ── */}
       <section className="relative z-10 -mt-8 px-4 sm:-mt-10 sm:px-6">
-        <div className="mx-auto max-w-5xl overflow-hidden rounded-lg border border-amber-900/10 bg-white shadow-lg shadow-amber-900/8 dark:border-gray-700 dark:bg-gray-900 dark:shadow-black/30">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-lg border border-amber-900/10 bg-paper-elevated shadow-lg shadow-amber-950/8 dark:border-gray-700 dark:bg-gray-900 dark:shadow-black/30">
           <ul className="grid grid-cols-2 md:grid-cols-4">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
@@ -560,7 +560,7 @@ export default function Landing() {
               return (
                 <div
                   key={step.title}
-                  className="step-card bg-[#fcfaf8] p-6 dark:bg-gray-900 sm:p-7"
+                  className="step-card bg-paper p-6 dark:bg-gray-900 sm:p-7"
                 >
                   <div className="mb-5 flex items-center gap-3">
                     <span className="font-serif text-sm font-medium text-amber-700/50 dark:text-amber-400/40">
@@ -584,7 +584,7 @@ export default function Landing() {
       </section>
 
       {/* ── Browse by Category ── */}
-      <section className="border-y border-amber-900/8 bg-white px-5 py-16 dark:border-gray-800 dark:bg-gray-900/40 sm:px-6 sm:py-20">
+      <section className="border-y border-amber-900/8 bg-paper-elevated px-5 py-16 dark:border-gray-800 dark:bg-gray-900/40 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -666,7 +666,7 @@ export default function Landing() {
                   <Link
                     key={book._id}
                     to={`/books/${book._id}`}
-                    className="book-card group overflow-hidden rounded-lg border border-amber-900/10 bg-white transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-900"
+                    className="book-card group overflow-hidden rounded-lg border border-amber-900/10 bg-paper-elevated transition-shadow hover:shadow-md hover:shadow-amber-950/6 dark:border-gray-700 dark:bg-gray-900"
                   >
                     <div className="relative flex h-48 items-center justify-center bg-stone-100 p-4 dark:bg-gray-800 sm:h-52">
                       {book.imgUrl ? (
@@ -737,7 +737,7 @@ export default function Landing() {
       </section>
 
       {/* ── Why DustedBooks ── */}
-      <section className="border-t border-amber-900/8 bg-white px-5 py-16 dark:border-gray-800 dark:bg-gray-900/40 sm:px-6 sm:py-20">
+      <section className="border-t border-amber-900/8 bg-paper-elevated px-5 py-16 dark:border-gray-800 dark:bg-gray-900/40 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="grid items-start gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-14">
             <div>
@@ -765,7 +765,7 @@ export default function Landing() {
                 return (
                   <div
                     key={perk.title}
-                    className="perk-card bg-[#fcfaf8] p-5 dark:bg-gray-900 sm:p-6"
+                    className="perk-card bg-paper p-5 dark:bg-gray-900 sm:p-6"
                   >
                     <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
                       <Icon className="h-[18px] w-[18px]" />
@@ -786,7 +786,7 @@ export default function Landing() {
 
       {/* ── CTA Banner ── */}
       <section className="px-5 py-14 sm:px-6 sm:py-16">
-        <div className="mx-auto max-w-6xl rounded-lg bg-[#2f2419] px-6 py-12 text-center dark:bg-gray-900 sm:px-10 sm:py-14">
+        <div className="mx-auto max-w-6xl rounded-lg bg-shelf px-6 py-12 text-center dark:bg-gray-900 sm:px-10 sm:py-14">
           <p className="mb-3 text-[13px] font-medium tracking-[0.12em] text-amber-200/60 uppercase">
             Start reading
           </p>
