@@ -5,6 +5,7 @@ import {
   useState,
   type CSSProperties,
 } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import HeroImgSpines from "../../assets/hero-imgs/hero-img2.jpg";
 import HeroImgShelves from "../../assets/hero-imgs/hero-shelves.jpg";
@@ -62,25 +63,12 @@ const HERO_SLIDE_MS = 6500;
 const HERO_FADE_MS = 1200;
 const SLIDE_COUNT = HERO_SLIDES.length;
 
-function SparklesIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="currentColor"
-      aria-hidden="true"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
-      />
-    </svg>
-  );
-}
+const CONTACT_PHONES = [
+  { display: "077 496 5624", tel: "0774965624", wa: "94774965624" },
+  { display: "078 390 7616", tel: "0783907616", wa: "94783907616" },
+] as const;
+
+const CONTACT_EMAIL = "dustedbooks130@gmail.com";
 
 function ArrowRightIcon({ className }: { className?: string }) {
   return (
@@ -138,6 +126,7 @@ function Hero() {
   const [heroSlide, setHeroSlide] = useState(0);
   const [paused, setPaused] = useState(false);
   const [tabHidden, setTabHidden] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   /** Once a slide is requested, keep its layer mounted for smooth revisits. */
   const [mountedSlides, setMountedSlides] = useState(() => new Set([0, 1]));
   /** Flip after paint so transform transitions from scale(1) → kenBurns (incl. first slide). */
@@ -146,7 +135,23 @@ function Hero() {
   const timerEpochRef = useRef(0);
   const [timerEpoch, setTimerEpoch] = useState(0);
   const prefersReducedMotion = usePrefersReducedMotion();
-  const autoplay = !prefersReducedMotion && !paused && !tabHidden;
+  const autoplay = !prefersReducedMotion && !paused && !tabHidden && !isContactModalOpen;
+
+  useEffect(() => {
+    if (!isContactModalOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsContactModalOpen(false);
+    };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isContactModalOpen]);
 
   const goToSlide = useCallback((index: number) => {
     setKenBurnsOn(false);
@@ -293,58 +298,60 @@ function Hero() {
       {/* ── Hero copy ── */}
       <div
         ref={textRef}
-        className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center px-5 pb-20 pt-28 text-center sm:px-6 sm:pb-24 sm:pt-32"
+        className="relative z-10 mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-5 pb-20 pt-28 text-center sm:px-6 sm:pb-24 sm:pt-32"
       >
-        <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200/25 bg-black/40 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-amber-100 shadow-lg shadow-black/20 backdrop-blur-md sm:mb-5 sm:px-5 sm:py-2 sm:text-sm">
-          <SparklesIcon className="h-4 w-4 shrink-0 text-amber-300" />
-          Welcome back to DustedBooks
+        <p className="mb-4 text-[13px] font-medium tracking-[0.14em] text-amber-100/75 uppercase sm:mb-5">
+          Welcome back
         </p>
 
         {/* Story chapter that tracks the slideshow */}
         <p
-          className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-amber-300/90 sm:text-xs"
+          className="mb-3 text-[12px] font-medium tracking-[0.16em] text-amber-200/70 uppercase"
           aria-live="polite"
         >
-          <span className="text-amber-200/50">
+          <span className="text-amber-200/40">
             {String(heroSlide + 1).padStart(2, "0")}
           </span>
-          <span className="mx-2 text-amber-200/30">·</span>
+          <span className="mx-2 text-amber-200/25">·</span>
           {activeSlide.label}
         </p>
 
-        <h1 className="text-balance text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="font-serif text-balance text-[2.5rem] font-medium leading-[1.12] text-white sm:text-5xl md:text-6xl lg:text-[4rem]">
           Your next story is{" "}
-          <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-orange-400 bg-clip-text text-transparent">
-            waiting
-          </span>
+          <span className="text-amber-200">waiting</span>
         </h1>
 
-        <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-white/85 sm:mt-6 sm:text-lg md:text-xl">
-          Discover pre-loved books at great prices, sell the ones gathering dust,
-          or request titles we don&apos;t yet stock.
+        <p className="mt-5 max-w-xl text-pretty text-[15px] leading-relaxed text-white/75 sm:mt-6 sm:text-lg">
+          Browse pre-loved books, request titles we don&apos;t stock yet, or sell the ones you&apos;ve finished.
         </p>
 
-        <div className="mt-8 flex w-full max-w-xl flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3.5">
+        <div className="mt-8 flex w-full max-w-md flex-col items-stretch gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-3">
           <Link
-            to="/sell-book"
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-amber-500 px-8 py-3.5 text-base font-bold text-gray-900 shadow-xl shadow-amber-600/30 transition-[transform,background-color,box-shadow] duration-200 hover:scale-[1.02] hover:bg-amber-400 hover:shadow-amber-500/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300 active:scale-[0.98]"
+            to="/browse"
+            className="group inline-flex items-center justify-center gap-2 rounded-md bg-amber-500 px-6 py-3 text-[15px] font-medium text-stone-900 transition-colors hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
           >
-            Sell a Book
-            <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+            Browse books
+            <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
           <Link
             to="/my-requests"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/12 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-black/15 backdrop-blur-md transition-[transform,background-color,border-color] duration-200 hover:scale-[1.02] hover:border-white/70 hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-[0.98]"
+            className="inline-flex items-center justify-center gap-2 rounded-md border border-white/35 bg-white/10 px-6 py-3 text-[15px] font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/18 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
-            Request a Book
-          </Link>
-          <Link
-            to="/my-sell-requests"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-transparent px-8 py-3.5 text-base font-semibold text-white/90 transition-[transform,background-color,border-color,color] duration-200 hover:scale-[1.02] hover:border-white/50 hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-[0.98]"
-          >
-            My Sell Requests
+            Request a book
           </Link>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setIsContactModalOpen(true)}
+          className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-amber-100/70 underline decoration-amber-200/25 underline-offset-4 transition-colors hover:text-amber-100 hover:decoration-amber-200/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+        >
+          Sell your books
+          <span className="text-amber-100/40" aria-hidden="true">
+            —
+          </span>
+          <span className="no-underline">contact us</span>
+        </button>
 
         {/* Progress indicators — hover/focus pauses autoplay so users can choose */}
         <div
@@ -395,16 +402,132 @@ function Hero() {
       {/* Scroll cue */}
       <a
         href="#books"
-        className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-white/55 transition-colors hover:text-white/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-white/50 transition-colors hover:text-white/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         aria-label="Scroll to books"
       >
-        <span className="text-[10px] font-medium uppercase tracking-[0.2em]">
+        <span className="text-[11px] font-medium tracking-[0.14em] uppercase">
           Explore
         </span>
         <ChevronDownIcon
           className={`h-4 w-4 ${prefersReducedMotion ? "" : "hero-scroll-cue"}`}
         />
       </a>
+
+      {/* ── Contact / Sell books dialog (portaled so it stays fixed over ScrollSmoother) ── */}
+      {isContactModalOpen &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 p-4 backdrop-blur-[2px]"
+            role="presentation"
+            onClick={() => setIsContactModalOpen(false)}
+          >
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="sell-books-title"
+              className="relative w-full max-w-[420px] rounded-lg border border-amber-900/10 bg-white shadow-2xl shadow-black/20 dark:border-gray-700 dark:bg-gray-900"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-start justify-between gap-4 border-b border-amber-900/8 px-5 py-4 dark:border-gray-800">
+                <div>
+                  <h3
+                    id="sell-books-title"
+                    className="font-serif text-xl font-medium text-amber-950 dark:text-amber-50"
+                  >
+                    Sell your books
+                  </h3>
+                  <p className="mt-1 text-sm text-amber-900/55 dark:text-amber-200/45">
+                    Reach us by phone, WhatsApp, or email — we handle evaluation
+                    and collection.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsContactModalOpen(false)}
+                  className="shrink-0 rounded-md p-1.5 text-amber-900/40 transition-colors hover:bg-amber-50 hover:text-amber-900 dark:text-amber-200/40 dark:hover:bg-gray-800 dark:hover:text-amber-100"
+                  aria-label="Close"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="1.75"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18 18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <div className="space-y-5 px-5 py-5">
+                <div>
+                  <p className="mb-2.5 text-[11px] font-medium tracking-[0.12em] text-amber-800/55 uppercase dark:text-amber-300/50">
+                    Phone
+                  </p>
+                  <ul className="divide-y divide-amber-900/8 overflow-hidden rounded-md border border-amber-900/10 dark:divide-gray-700 dark:border-gray-700">
+                    {CONTACT_PHONES.map((phone) => (
+                      <li
+                        key={phone.tel}
+                        className="flex flex-wrap items-center justify-between gap-3 bg-[#fcfaf8] px-4 py-3.5 dark:bg-gray-900/80"
+                      >
+                        <span className="text-sm font-medium tabular-nums text-amber-950 dark:text-amber-50">
+                          {phone.display}
+                        </span>
+                        <div className="flex shrink-0 items-center gap-2">
+                          <a
+                            href={`tel:${phone.tel}`}
+                            className="rounded-md border border-amber-900/12 bg-white px-3 py-1.5 text-xs font-medium text-amber-900/80 transition-colors hover:border-amber-700/30 hover:bg-amber-50 dark:border-gray-600 dark:bg-gray-800 dark:text-amber-100 dark:hover:bg-gray-700"
+                          >
+                            Call
+                          </a>
+                          <a
+                            href={`https://wa.me/${phone.wa}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-md bg-emerald-700 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-emerald-600"
+                          >
+                            WhatsApp
+                          </a>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <p className="mb-2.5 text-[11px] font-medium tracking-[0.12em] text-amber-800/55 uppercase dark:text-amber-300/50">
+                    Email
+                  </p>
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="flex items-center justify-between gap-3 rounded-md border border-amber-900/10 bg-[#fcfaf8] px-4 py-3.5 text-sm font-medium text-amber-950 transition-colors hover:border-amber-700/25 hover:bg-amber-50/80 dark:border-gray-700 dark:bg-gray-900/80 dark:text-amber-50 dark:hover:bg-gray-800"
+                  >
+                    <span className="truncate">{CONTACT_EMAIL}</span>
+                    <span className="shrink-0 text-xs font-medium text-amber-700 dark:text-amber-400">
+                      Send email
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="border-t border-amber-900/8 px-5 py-3.5 dark:border-gray-800">
+                <button
+                  type="button"
+                  onClick={() => setIsContactModalOpen(false)}
+                  className="w-full rounded-md bg-amber-900 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-800 dark:bg-amber-700 dark:hover:bg-amber-600"
+                >
+                  Done
+                </button>
+              </div>
+            </div>
+          </div>,
+          document.body,
+        )}
     </section>
   );
 }

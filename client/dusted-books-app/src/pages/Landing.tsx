@@ -146,163 +146,34 @@ function MoonIcon() {
   );
 }
 
-function NonFictionIcon({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
-    </svg>
-  );
-}
-
-function MysteryIcon({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-    </svg>
-  );
-}
-
-function SelfHelpIcon({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z" />
-    </svg>
-  );
-}
-
-function RomanceIcon({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-    </svg>
-  );
-}
-
-function ScienceIcon({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 1-6.23.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-    </svg>
-  );
-}
-
-function HistoryIcon({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-    </svg>
-  );
-}
-
-function BiographyIcon({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-    </svg>
-  );
-}
-
 const steps = [
   {
     icon: BookOpenIcon,
     title: "Browse & Discover",
     desc: "Explore hundreds of pre-loved books across Fiction, Non-Fiction, Science, History, and more.",
-    color: "from-amber-500 to-orange-500",
-    bgLight: "bg-amber-50",
-    bgDark: "dark:bg-amber-900/20",
   },
   {
     icon: ShoppingBagIcon,
     title: "Buy or Request",
     desc: "Found what you love? Add to cart. Can't find it? Submit a book request and we'll source it.",
-    color: "from-emerald-500 to-teal-500",
-    bgLight: "bg-emerald-50",
-    bgDark: "dark:bg-emerald-900/20",
   },
   {
     icon: SparklesIcon,
-    title: "Sell Your Books",
-    desc: "Have books gathering dust? List them for sale—individually or as a bundle—and earn from your shelf.",
-    color: "from-violet-500 to-purple-500",
-    bgLight: "bg-violet-50",
-    bgDark: "dark:bg-violet-900/20",
+    title: "Sell via Contact Us",
+    desc: "Have books gathering dust? Contact us via Call/WhatsApp or Email to sell your pre-loved books.",
   },
 ];
 
 const browseCategories = [
-  {
-    name: "Fiction",
-    blurb: "Stories that transport you",
-    icon: BookOpenIcon,
-    accent: "from-amber-500 to-orange-500",
-    soft: "bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
-    ring: "group-hover:ring-amber-400/40",
-  },
-  {
-    name: "Non-Fiction",
-    blurb: "Ideas, facts & insight",
-    icon: NonFictionIcon,
-    accent: "from-sky-500 to-blue-600",
-    soft: "bg-sky-50 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300",
-    ring: "group-hover:ring-sky-400/40",
-  },
-  {
-    name: "Mystery",
-    blurb: "Twists until the last page",
-    icon: MysteryIcon,
-    accent: "from-indigo-500 to-violet-600",
-    soft: "bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300",
-    ring: "group-hover:ring-indigo-400/40",
-  },
-  {
-    name: "Self Help",
-    blurb: "Grow, focus, feel better",
-    icon: SelfHelpIcon,
-    accent: "from-emerald-500 to-teal-600",
-    soft: "bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300",
-    ring: "group-hover:ring-emerald-400/40",
-  },
-  {
-    name: "Romance",
-    blurb: "Hearts, heat & HEAs",
-    icon: RomanceIcon,
-    accent: "from-rose-500 to-pink-600",
-    soft: "bg-rose-50 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300",
-    ring: "group-hover:ring-rose-400/40",
-  },
-  {
-    name: "Science",
-    blurb: "Wonder of how it works",
-    icon: ScienceIcon,
-    accent: "from-cyan-500 to-teal-600",
-    soft: "bg-cyan-50 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300",
-    ring: "group-hover:ring-cyan-400/40",
-  },
-  {
-    name: "History",
-    blurb: "Past lives, present lessons",
-    icon: HistoryIcon,
-    accent: "from-stone-500 to-amber-700",
-    soft: "bg-stone-100 text-stone-700 dark:bg-stone-800/60 dark:text-stone-300",
-    ring: "group-hover:ring-stone-400/40",
-  },
-  {
-    name: "Biography",
-    blurb: "Real people, real stories",
-    icon: BiographyIcon,
-    accent: "from-violet-500 to-purple-600",
-    soft: "bg-violet-50 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300",
-    ring: "group-hover:ring-violet-400/40",
-  },
-  {
-    name: "Kids",
-    blurb: "Adventures for little readers",
-    icon: SparklesIcon,
-    accent: "from-yellow-400 to-orange-500",
-    soft: "bg-yellow-50 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300",
-    ring: "group-hover:ring-yellow-400/40",
-  },
+  "Fiction",
+  "Non-Fiction",
+  "Mystery",
+  "Self Help",
+  "Romance",
+  "Science",
+  "History",
+  "Biography",
+  "Kids",
 ] as const;
 
 const perks = [
@@ -323,8 +194,8 @@ const perks = [
   },
   {
     icon: TruckIcon,
-    title: "Easy Pickup",
-    desc: "Selling? Tell us where your books are and we'll arrange collection — no packing, no postage.",
+    title: "Contact to Sell",
+    desc: "Want to sell? Reach us directly on Call/WhatsApp (0774965624 / 0783907616) or Email to arrange pickup.",
   },
 ];
 
@@ -456,8 +327,8 @@ export default function Landing() {
     },
     {
       value: "Free",
-      label: "Join & sell",
-      hint: "No signup fees",
+      label: "Contact to Sell",
+      hint: "Direct assistance",
       icon: SparklesIcon,
     },
   ];
@@ -509,20 +380,20 @@ export default function Landing() {
 
             <Link
               to="/signup"
-              className={`hidden rounded-full px-4 py-2 text-sm font-semibold transition-all hover:scale-[1.02] active:scale-95 sm:inline-flex ${
+              className={`hidden rounded-md px-4 py-2 text-sm font-medium transition-colors sm:inline-flex ${
                 scrolled
-                  ? "border border-amber-800/20 bg-white text-amber-900 hover:bg-amber-50 dark:border-amber-300/20 dark:bg-gray-800 dark:text-amber-100 dark:hover:bg-gray-700"
-                  : "border border-white/40 bg-white text-amber-950 shadow-lg shadow-black/15 hover:bg-amber-50"
+                  ? "border border-amber-800/15 text-amber-900 hover:bg-amber-50 dark:border-amber-300/15 dark:text-amber-100 dark:hover:bg-gray-800"
+                  : "border border-white/35 text-white hover:bg-white/10"
               }`}
             >
-              Sign Up
+              Sign up
             </Link>
 
             <Link
               to="/login"
-              className="rounded-full bg-amber-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-amber-700/25 transition-all hover:scale-[1.02] hover:bg-amber-500 active:scale-95 sm:px-5"
+              className="rounded-md bg-amber-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-amber-500 sm:px-5"
             >
-              Sign In
+              Sign in
             </Link>
           </div>
         </div>
@@ -575,37 +446,34 @@ export default function Landing() {
           <span className="absolute left-[88%] top-[48%] h-1 w-1 animate-pulse rounded-full bg-amber-200/25 [animation-delay:900ms]" />
         </div>
 
-        <div className="landing-hero-text relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center px-5 py-16 text-center sm:px-6 sm:py-20">
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-200/30 bg-black/35 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber-100 backdrop-blur-md sm:mb-6 sm:text-sm">
-            <SparklesIcon className="h-4 w-4 shrink-0 text-amber-300" />
-            Sri Lanka&apos;s Preloved Book Marketplace
+        <div className="landing-hero-text relative z-10 mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-5 py-16 text-center sm:px-6 sm:py-20">
+          <p className="mb-5 text-[13px] font-medium tracking-[0.14em] text-amber-100/80 uppercase sm:mb-6">
+            Preloved books · Sri Lanka
           </p>
 
-          <h1 className="text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            Give Books a{" "}
-            <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-orange-400 bg-clip-text text-transparent">
-              Second Life
-            </span>
+          <h1 className="font-serif text-[2.6rem] font-medium leading-[1.12] text-white sm:text-5xl md:text-6xl lg:text-[4.25rem]">
+            Give books a{" "}
+            <em className="not-italic font-medium text-amber-200">second life</em>
           </h1>
 
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/85 sm:mt-5 sm:text-lg">
-            Discover pre-loved books at great prices, sell the ones gathering dust on your shelf, or request titles we don&apos;t yet stock.
+          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/75 sm:mt-6 sm:text-lg">
+            Buy pre-loved titles for less, sell the ones you&apos;ve finished, or request something we don&apos;t have yet.
           </p>
 
-          <div className="mt-7 flex w-full max-w-md flex-col gap-3 sm:mt-9 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
+          <div className="mt-8 flex w-full max-w-md flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:justify-center sm:gap-3">
             <Link
               to="/browse"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-amber-500 px-7 py-3.5 text-base font-bold text-gray-900 shadow-xl shadow-amber-600/35 transition-all hover:scale-[1.02] hover:bg-amber-400 active:scale-95"
+              className="group inline-flex items-center justify-center gap-2 rounded-md bg-amber-500 px-6 py-3 text-[15px] font-medium text-stone-900 transition-colors hover:bg-amber-400"
             >
-              Browse Collection
-              <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              Browse books
+              <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
 
             <Link
               to="/signup"
-              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white bg-white px-7 py-3.5 text-base font-bold text-amber-950 shadow-xl shadow-black/20 transition-all hover:scale-[1.02] hover:bg-amber-50 active:scale-95"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-white/40 bg-white/10 px-6 py-3 text-[15px] font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/18"
             >
-              Create Account
+              Create account
             </Link>
           </div>
 
@@ -632,7 +500,7 @@ export default function Landing() {
 
       {/* ── Stats strip ── */}
       <section className="relative z-10 -mt-8 px-4 sm:-mt-10 sm:px-6">
-        <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-amber-900/10 bg-white shadow-xl shadow-amber-900/10 dark:border-gray-700 dark:bg-gray-900 dark:shadow-black/30">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-lg border border-amber-900/10 bg-white shadow-lg shadow-amber-900/8 dark:border-gray-700 dark:bg-gray-900 dark:shadow-black/30">
           <ul className="grid grid-cols-2 md:grid-cols-4">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
@@ -650,14 +518,14 @@ export default function Landing() {
                     !isLastDesktop ? "md:border-r md:border-amber-900/8 dark:md:border-gray-700/80" : "md:border-r-0",
                   ].join(" ")}
                 >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-100 to-orange-50 text-amber-700 ring-1 ring-amber-900/5 dark:from-amber-900/40 dark:to-amber-950/40 dark:text-amber-300 dark:ring-white/5 sm:h-11 sm:w-11">
-                    <Icon className="h-5 w-5" />
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-amber-50 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 sm:h-10 sm:w-10">
+                    <Icon className="h-[18px] w-[18px]" />
                   </span>
                   <div className="min-w-0 text-left">
-                    <p className="truncate text-xl font-extrabold leading-none tracking-tight text-amber-800 dark:text-amber-300 sm:text-2xl">
+                    <p className="font-serif truncate text-xl font-semibold leading-none text-amber-800 dark:text-amber-300 sm:text-2xl">
                       {stat.value}
                     </p>
-                    <p className="mt-1 truncate text-xs font-semibold leading-snug text-amber-950/80 dark:text-amber-100/85 sm:text-sm">
+                    <p className="mt-1 truncate text-xs font-medium leading-snug text-amber-950/75 dark:text-amber-100/80 sm:text-sm">
                       {stat.label}
                     </p>
                     <p className="mt-0.5 hidden truncate text-[11px] leading-snug text-amber-900/45 dark:text-amber-200/40 sm:block">
@@ -672,38 +540,42 @@ export default function Landing() {
       </section>
 
       {/* ── How It Works ── */}
-      <section className="px-5 py-14 sm:px-6 sm:py-16">
+      <section className="px-5 py-16 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-8 text-center sm:mb-10">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-400">
-              How It Works
+          <div className="mb-10 max-w-lg sm:mb-12">
+            <p className="mb-2 text-[13px] font-medium tracking-[0.12em] text-amber-700/80 uppercase dark:text-amber-400/80">
+              How it works
             </p>
-            <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl md:text-4xl">
-              Three simple steps to start
+            <h2 className="font-serif text-3xl font-medium tracking-tight text-amber-950 dark:text-amber-50 sm:text-4xl">
+              Three steps to get going
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm text-amber-800/65 dark:text-amber-200/50 sm:text-base">
-              Whether you&apos;re buying, selling, or hunting for a specific title — we&apos;ve got you covered.
+            <p className="mt-3 text-[15px] leading-relaxed text-amber-900/55 dark:text-amber-200/45">
+              Buy, sell, or request — whatever you need from the shelf.
             </p>
           </div>
 
-          <div ref={stepsRef} className="grid gap-4 md:grid-cols-3 md:gap-5">
+          <div ref={stepsRef} className="grid gap-px overflow-hidden rounded-lg border border-amber-900/10 bg-amber-900/10 dark:border-gray-700 dark:bg-gray-700 md:grid-cols-3">
             {steps.map((step, i) => {
               const Icon = step.icon;
               return (
                 <div
                   key={step.title}
-                  className={`step-card group relative rounded-2xl border border-amber-900/8 p-6 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-900/5 dark:border-gray-700 dark:hover:shadow-black/20 sm:p-7 ${step.bgLight} ${step.bgDark}`}
+                  className="step-card bg-[#fcfaf8] p-6 dark:bg-gray-900 sm:p-7"
                 >
-                  <div
-                    className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-lg ${step.color}`}
-                  >
-                    <Icon className="h-6 w-6" />
+                  <div className="mb-5 flex items-center gap-3">
+                    <span className="font-serif text-sm font-medium text-amber-700/50 dark:text-amber-400/40">
+                      0{i + 1}
+                    </span>
+                    <span className="flex h-9 w-9 items-center justify-center rounded-md bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+                      <Icon className="h-[18px] w-[18px]" />
+                    </span>
                   </div>
-                  <div className="absolute right-5 top-5 select-none text-5xl font-black text-amber-900/5 dark:text-white/5">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <h3 className="mb-2 text-lg font-bold">{step.title}</h3>
-                  <p className="text-sm leading-relaxed text-amber-800/70 dark:text-amber-200/60">{step.desc}</p>
+                  <h3 className="font-serif mb-2 text-lg font-medium text-amber-950 dark:text-amber-50">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-amber-900/55 dark:text-amber-200/45">
+                    {step.desc}
+                  </p>
                 </div>
               );
             })}
@@ -712,154 +584,120 @@ export default function Landing() {
       </section>
 
       {/* ── Browse by Category ── */}
-      <section className="relative overflow-hidden bg-white px-5 py-14 dark:bg-gray-900/50 sm:px-6 sm:py-16">
-        {/* Soft shelf-like backdrop wash */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-amber-50/80 to-transparent dark:from-amber-950/20"
-        />
-        <div className="relative mx-auto max-w-6xl">
-          <div className="mb-8 flex flex-col items-center text-center sm:mb-10">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-400">
-              Find Your Genre
-            </p>
-            <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl md:text-4xl">
-              Browse by category
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm text-amber-800/65 dark:text-amber-200/50 sm:text-base">
-              Pick a shelf and start exploring — every title is pre-loved and ready for its next reader.
-            </p>
+      <section className="border-y border-amber-900/8 bg-white px-5 py-16 dark:border-gray-800 dark:bg-gray-900/40 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="mb-2 text-[13px] font-medium tracking-[0.12em] text-amber-700/80 uppercase dark:text-amber-400/80">
+                The shelves
+              </p>
+              <h2 className="font-serif text-3xl font-medium tracking-tight text-amber-950 dark:text-amber-50 sm:text-4xl">
+                Browse by category
+              </h2>
+            </div>
+            <Link
+              to="/browse"
+              className="group inline-flex items-center gap-1.5 text-sm font-medium text-amber-800/70 transition-colors hover:text-amber-700 dark:text-amber-300/70 dark:hover:text-amber-300"
+            >
+              See everything
+              <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </div>
 
           <div
             ref={categoriesRef}
-            className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-3"
+            className="grid grid-cols-1 border-t border-amber-900/10 dark:border-gray-700 sm:grid-cols-2 lg:grid-cols-3"
           >
-            {browseCategories.map((cat) => {
-              const Icon = cat.icon;
-              return (
-                <Link
-                  key={cat.name}
-                  to={`/browse?category=${encodeURIComponent(cat.name)}`}
-                  className={`category-chip group relative flex flex-col overflow-hidden rounded-2xl border border-amber-900/8 bg-[#fcfaf8] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-amber-900/15 hover:shadow-xl hover:shadow-amber-900/8 dark:border-gray-700 dark:bg-gray-800/80 dark:hover:border-gray-600 dark:hover:shadow-black/30 sm:p-5 ${cat.ring} ring-0 hover:ring-2`}
-                >
-                  {/* Top accent bar */}
-                  <span
-                    aria-hidden
-                    className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-80 transition-opacity group-hover:opacity-100 ${cat.accent}`}
-                  />
-
-                  <div className="flex items-start justify-between gap-3">
-                    <span
-                      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl shadow-sm ring-1 ring-black/5 transition-transform duration-300 group-hover:scale-110 dark:ring-white/10 sm:h-12 sm:w-12 ${cat.soft}`}
-                    >
-                      <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
-                    </span>
-                    <span className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-amber-900/5 text-amber-900/40 transition-all duration-300 group-hover:bg-amber-600 group-hover:text-white dark:bg-white/5 dark:text-amber-100/40 dark:group-hover:bg-amber-500">
-                      <ArrowRightIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
-                    </span>
-                  </div>
-
-                  <div className="mt-4 min-w-0">
-                    <h3 className="truncate text-base font-bold tracking-tight text-amber-950 dark:text-amber-50 sm:text-lg">
-                      {cat.name}
-                    </h3>
-                    <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-amber-800/60 dark:text-amber-200/45 sm:text-sm">
-                      {cat.blurb}
-                    </p>
-                  </div>
-
-                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-amber-700/70 transition-colors group-hover:text-amber-700 dark:text-amber-400/60 dark:group-hover:text-amber-300">
-                    Explore shelf
-                    <ArrowRightIcon className="h-3 w-3 opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100" />
+            {browseCategories.map((name, index) => (
+              <Link
+                key={name}
+                to={`/browse?category=${encodeURIComponent(name)}`}
+                className="category-chip group flex items-center justify-between gap-4 border-b border-amber-900/10 px-1 py-4 transition-colors hover:bg-amber-50/60 dark:border-gray-700 dark:hover:bg-amber-950/20 sm:px-3"
+              >
+                <span className="flex min-w-0 items-baseline gap-3">
+                  <span className="font-serif w-5 shrink-0 text-xs text-amber-700/35 dark:text-amber-400/30">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
-                </Link>
-              );
-            })}
-          </div>
-
-          <div className="mt-8 flex justify-center sm:mt-10">
-            <Link
-              to="/browse"
-              className="group inline-flex items-center gap-2 rounded-full border border-amber-900/10 bg-[#fcfaf8] px-5 py-2.5 text-sm font-semibold text-amber-900/80 transition-all hover:border-amber-600/40 hover:bg-amber-50 hover:text-amber-700 hover:shadow-md hover:shadow-amber-900/5 dark:border-gray-700 dark:bg-gray-800 dark:text-amber-100/80 dark:hover:bg-amber-900/20 dark:hover:text-amber-300"
-            >
-              View all books
-              <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+                  <span className="font-serif text-lg font-medium text-amber-950 transition-colors group-hover:text-amber-800 dark:text-amber-50 dark:group-hover:text-amber-200 sm:text-xl">
+                    {name}
+                  </span>
+                </span>
+                <ArrowRightIcon className="h-4 w-4 shrink-0 text-amber-900/20 transition-all group-hover:translate-x-0.5 group-hover:text-amber-700 dark:text-amber-200/20 dark:group-hover:text-amber-400" />
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ── Featured Books (always rendered so the section never disappears) ── */}
-      <section className="px-5 py-14 sm:px-6 sm:py-16">
+      <section className="px-5 py-16 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-7 flex items-end justify-between gap-4 sm:mb-8">
+          <div className="mb-8 flex items-end justify-between gap-4 sm:mb-10">
             <div>
-              <p className="mb-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-400">
-                Featured Collection
+              <p className="mb-2 text-[13px] font-medium tracking-[0.12em] text-amber-700/80 uppercase dark:text-amber-400/80">
+                On the shelf
               </p>
-              <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl md:text-4xl">
-                Fresh from the shelf
+              <h2 className="font-serif text-3xl font-medium tracking-tight text-amber-950 dark:text-amber-50 sm:text-4xl">
+                Fresh finds
               </h2>
             </div>
             <Link
               to="/browse"
-              className="group hidden items-center gap-2 text-sm font-semibold text-amber-700 transition-colors hover:text-amber-600 dark:text-amber-400 sm:inline-flex"
+              className="group hidden items-center gap-1.5 text-sm font-medium text-amber-800/70 transition-colors hover:text-amber-700 dark:text-amber-300/70 dark:hover:text-amber-300 sm:inline-flex"
             >
               View all
-              <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
 
           {booksLoading ? (
-            <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {Array.from({ length: 3 }).map((_, i) => (
                 <div
                   key={i}
-                  className="h-72 animate-pulse rounded-2xl border border-amber-900/8 bg-amber-100/40 dark:border-gray-700 dark:bg-gray-800"
+                  className="h-72 animate-pulse rounded-lg border border-amber-900/8 bg-amber-100/40 dark:border-gray-700 dark:bg-gray-800"
                 />
               ))}
             </div>
           ) : books.length > 0 ? (
             <>
-              <div ref={booksRef} className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+              <div ref={booksRef} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {books.map((book) => (
                   <Link
                     key={book._id}
                     to={`/books/${book._id}`}
-                    className="book-card group overflow-hidden rounded-2xl border border-amber-900/8 bg-white transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-900/10 dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-black/30"
+                    className="book-card group overflow-hidden rounded-lg border border-amber-900/10 bg-white transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-900"
                   >
-                    <div className="relative flex h-48 items-center justify-center bg-gradient-to-br from-amber-50 via-orange-50 to-white p-4 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 sm:h-52">
+                    <div className="relative flex h-48 items-center justify-center bg-stone-100 p-4 dark:bg-gray-800 sm:h-52">
                       {book.imgUrl ? (
                         <img
                           src={book.imgUrl}
                           alt={book.title}
-                          className="max-h-full max-w-[140px] object-contain transition-transform group-hover:scale-105"
+                          className="max-h-full max-w-[130px] object-contain transition-transform duration-300 group-hover:scale-[1.03]"
                           loading="lazy"
                         />
                       ) : (
-                        <BookOpenIcon className="h-14 w-14 text-amber-900/20 dark:text-amber-200/20" />
+                        <BookOpenIcon className="h-12 w-12 text-amber-900/15 dark:text-amber-200/15" />
                       )}
                       {book.category?.[0] && (
-                        <span className="absolute left-3 top-3 rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">
+                        <span className="absolute left-3 top-3 bg-white/90 px-2 py-0.5 text-[11px] font-medium tracking-wide text-amber-900/70 dark:bg-gray-900/80 dark:text-amber-200/70">
                           {book.category[0]}
                         </span>
                       )}
                     </div>
-                    <div className="p-4 sm:p-5">
-                      <h3 className="truncate text-base font-bold text-amber-950 dark:text-amber-100">
+                    <div className="border-t border-amber-900/8 p-4 dark:border-gray-700 sm:p-5">
+                      <h3 className="font-serif truncate text-base font-medium text-amber-950 dark:text-amber-50">
                         {book.title}
                       </h3>
-                      <p className="mt-1 truncate text-sm text-amber-800/60 dark:text-amber-200/50">
-                        by {book.author}
+                      <p className="mt-1 truncate text-sm text-amber-900/50 dark:text-amber-200/40">
+                        {book.author}
                       </p>
                       <div className="mt-3 flex items-center justify-between">
-                        <span className="text-lg font-bold text-amber-700 dark:text-amber-400">
+                        <span className="text-[15px] font-semibold text-amber-800 dark:text-amber-300">
                           Rs. {book.price.toLocaleString("en-IN")}
                         </span>
-                        <span className="flex items-center gap-1 text-xs font-semibold text-amber-600 opacity-0 transition-opacity group-hover:opacity-100 dark:text-amber-400">
-                          View Details
-                          <ArrowRightIcon className="h-3 w-3" />
+                        <span className="text-xs font-medium text-amber-700/0 transition-colors group-hover:text-amber-700 dark:group-hover:text-amber-400">
+                          View →
                         </span>
                       </div>
                     </div>
@@ -867,30 +705,30 @@ export default function Landing() {
                 ))}
               </div>
 
-              <div className="mt-7 text-center sm:hidden">
+              <div className="mt-8 text-center sm:hidden">
                 <Link
                   to="/browse"
-                  className="inline-flex items-center gap-2 rounded-full bg-amber-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-amber-700/20 transition-all hover:scale-[1.02] hover:bg-amber-600"
+                  className="inline-flex items-center gap-2 rounded-md bg-amber-800 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-700"
                 >
-                  Browse All Books
+                  Browse all books
                   <ArrowRightIcon className="h-4 w-4" />
                 </Link>
               </div>
             </>
           ) : (
-            <div className="rounded-2xl border border-dashed border-amber-900/15 bg-white px-6 py-12 text-center dark:border-gray-700 dark:bg-gray-900/40">
-              <BookOpenIcon className="mx-auto mb-3 h-10 w-10 text-amber-700/40 dark:text-amber-300/40" />
-              <p className="text-base font-semibold text-amber-950 dark:text-amber-100">
+            <div className="rounded-lg border border-dashed border-amber-900/15 bg-white px-6 py-12 text-center dark:border-gray-700 dark:bg-gray-900/40">
+              <BookOpenIcon className="mx-auto mb-3 h-9 w-9 text-amber-700/35 dark:text-amber-300/35" />
+              <p className="font-serif text-base font-medium text-amber-950 dark:text-amber-100">
                 No books listed yet
               </p>
-              <p className="mt-1 text-sm text-amber-800/60 dark:text-amber-200/50">
+              <p className="mt-1 text-sm text-amber-900/50 dark:text-amber-200/45">
                 Check back soon, or browse the full collection.
               </p>
               <Link
                 to="/browse"
-                className="mt-5 inline-flex items-center gap-2 rounded-full bg-amber-600 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-amber-500"
+                className="mt-5 inline-flex items-center gap-2 rounded-md bg-amber-800 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-700"
               >
-                Go to Browse
+                Go to browse
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>
             </div>
@@ -899,41 +737,43 @@ export default function Landing() {
       </section>
 
       {/* ── Why DustedBooks ── */}
-      <section className="bg-white px-5 py-14 dark:bg-gray-900/50 sm:px-6 sm:py-16">
+      <section className="border-t border-amber-900/8 bg-white px-5 py-16 dark:border-gray-800 dark:bg-gray-900/40 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="grid items-start gap-8 lg:grid-cols-[1fr_1.35fr] lg:items-center lg:gap-10">
+          <div className="grid items-start gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-14">
             <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-400">
+              <p className="mb-2 text-[13px] font-medium tracking-[0.12em] text-amber-700/80 uppercase dark:text-amber-400/80">
                 Why DustedBooks
               </p>
-              <h2 className="text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl md:text-4xl">
+              <h2 className="font-serif text-3xl font-medium leading-snug tracking-tight text-amber-950 dark:text-amber-50 sm:text-4xl">
                 Books deserve more than one reader
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-amber-800/65 dark:text-amber-200/50 sm:text-base">
-                We built DustedBooks so great stories keep circulating instead of collecting dust. Buy with confidence, sell without hassle, and read for less.
+              <p className="mt-4 text-[15px] leading-relaxed text-amber-900/55 dark:text-amber-200/45">
+                Great stories should keep circulating. Buy with confidence, sell without hassle, and read for less.
               </p>
               <Link
                 to="/signup"
-                className="group mt-6 inline-flex items-center gap-2 rounded-full bg-amber-600 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-amber-700/20 transition-all hover:scale-[1.02] hover:bg-amber-500"
+                className="group mt-6 inline-flex items-center gap-2 rounded-md bg-amber-800 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-amber-700"
               >
-                Join the community
-                <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                Join free
+                <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
 
-            <div ref={perksRef} className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+            <div ref={perksRef} className="grid gap-px overflow-hidden rounded-lg border border-amber-900/10 bg-amber-900/10 dark:border-gray-700 dark:bg-gray-700 sm:grid-cols-2">
               {perks.map((perk) => {
                 const Icon = perk.icon;
                 return (
                   <div
                     key={perk.title}
-                    className="perk-card rounded-2xl border border-amber-900/8 bg-[#fcfaf8] p-5 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-amber-900/5 dark:border-gray-700 dark:bg-gray-800 dark:hover:shadow-black/20"
+                    className="perk-card bg-[#fcfaf8] p-5 dark:bg-gray-900 sm:p-6"
                   >
-                    <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
-                      <Icon className="h-5 w-5" />
+                    <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+                      <Icon className="h-[18px] w-[18px]" />
                     </div>
-                    <h3 className="mb-1.5 text-base font-bold">{perk.title}</h3>
-                    <p className="text-sm leading-relaxed text-amber-800/60 dark:text-amber-200/50">
+                    <h3 className="font-serif mb-1.5 text-base font-medium text-amber-950 dark:text-amber-50">
+                      {perk.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-amber-900/55 dark:text-amber-200/45">
                       {perk.desc}
                     </p>
                   </div>
@@ -945,37 +785,31 @@ export default function Landing() {
       </section>
 
       {/* ── CTA Banner ── */}
-      <section className="px-5 py-12 sm:px-6 sm:py-14">
-        <div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl bg-gradient-to-br from-[#4a3625] via-[#3a2818] to-[#2a1c10] p-8 text-center shadow-2xl shadow-amber-900/20 dark:from-gray-800 dark:via-gray-900 dark:to-gray-950 dark:shadow-black/40 sm:rounded-3xl sm:p-12">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-amber-500/15 blur-3xl mix-blend-screen" />
-          <div className="pointer-events-none absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-amber-600/10 blur-3xl mix-blend-screen" />
+      <section className="px-5 py-14 sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-6xl rounded-lg bg-[#2f2419] px-6 py-12 text-center dark:bg-gray-900 sm:px-10 sm:py-14">
+          <p className="mb-3 text-[13px] font-medium tracking-[0.12em] text-amber-200/60 uppercase">
+            Start reading
+          </p>
+          <h2 className="font-serif text-3xl font-medium leading-snug text-white sm:text-4xl">
+            Ready to dust off your bookshelf?
+          </h2>
+          <p className="mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-amber-100/55">
+            Free account. Buy, explore, and request books when you&apos;re ready.
+          </p>
 
-          <div className="relative z-10">
-            <p className="mb-4 inline-flex items-center rounded-full border border-amber-300/25 bg-amber-500/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber-200 backdrop-blur-md">
-              Join thousands of readers
-            </p>
-            <h2 className="text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl md:text-4xl">
-              Ready to dust off your bookshelf?
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-amber-200/75 sm:text-base">
-              Create a free account to start buying, selling, and requesting books today.
-            </p>
-
-            <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4">
-              <Link
-                to="/signup"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-amber-400 px-7 py-3.5 text-base font-bold text-gray-900 shadow-xl shadow-amber-500/25 transition-all hover:scale-[1.02] hover:bg-amber-300 active:scale-95"
-              >
-                Get Started Free
-                <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/browse"
-                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/50 bg-white/10 px-7 py-3.5 text-base font-semibold text-white backdrop-blur-md transition-all hover:scale-[1.02] hover:bg-white/20 active:scale-95"
-              >
-                Browse First
-              </Link>
-            </div>
+          <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-3">
+            <Link
+              to="/signup"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-amber-400 px-6 py-3 text-[15px] font-medium text-stone-900 transition-colors hover:bg-amber-300"
+            >
+              Create free account
+            </Link>
+            <Link
+              to="/browse"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 px-6 py-3 text-[15px] font-medium text-white transition-colors hover:bg-white/10"
+            >
+              Browse first
+            </Link>
           </div>
         </div>
       </section>
