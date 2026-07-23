@@ -6,9 +6,9 @@ function Cart() {
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#fcfaf8] dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white pt-28 pb-20 overflow-x-hidden w-full max-w-full">
+    <div className="min-h-screen bg-paper dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white pt-28 pb-20 overflow-x-hidden w-full max-w-full">
       <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <section className="rounded-3xl bg-white dark:bg-gray-900 border border-amber-900/10 dark:border-gray-700 p-8 shadow-sm shadow-amber-900/5 dark:shadow-black/20">
+        <section className="rounded-3xl bg-paper-elevated dark:bg-gray-900 border border-amber-900/10 dark:border-gray-700 p-8 shadow-sm shadow-amber-900/5 dark:shadow-black/20">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h1 className="text-3xl font-extrabold tracking-tight">Your Cart</h1>
@@ -43,7 +43,7 @@ function Cart() {
           ) : (
             <div className="mt-8 space-y-6">
               {cartItems.map((item) => (
-                <div key={item._id} className="rounded-3xl border border-amber-200 dark:border-gray-700 bg-[#fdfcfa] dark:bg-gray-900 p-6 shadow-sm shadow-amber-900/5 dark:shadow-black/20">
+                <div key={item._id} className="rounded-3xl border border-amber-200 dark:border-gray-700 bg-paper-elevated dark:bg-gray-900 p-6 shadow-sm shadow-amber-900/5 dark:shadow-black/20">
                   <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div className="flex items-center gap-4">
                       <img
@@ -73,7 +73,7 @@ function Cart() {
                 </div>
               ))}
 
-              <div className="rounded-3xl border border-amber-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-6 shadow-sm shadow-amber-900/5 dark:shadow-black/20">
+              <div className="rounded-3xl border border-amber-200 dark:border-gray-700 bg-paper-elevated dark:bg-gray-900 p-6 shadow-sm shadow-amber-900/5 dark:shadow-black/20">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <p className="text-sm text-amber-600 dark:text-amber-300">Cart total</p>
