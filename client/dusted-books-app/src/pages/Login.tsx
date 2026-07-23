@@ -151,7 +151,7 @@ function AuthPage() {
         type="button"
         onClick={toggleTheme}
         aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-        className="fixed top-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
+        className="fixed top-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-paper-elevated dark:bg-gray-800 border border-amber-900/10 dark:border-gray-700 shadow-md text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
       >
         {isDark ? (
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
@@ -180,12 +180,12 @@ function AuthPage() {
         .auth-input:-webkit-autofill:focus,
         .auth-input:-webkit-autofill:active,
         .auth-input:-internal-autofill-selected {
-          box-shadow: 0 0 0 1000px rgb(249 250 251) inset !important;
-          -webkit-box-shadow: 0 0 0 1000px rgb(249 250 251) inset !important;
-          background-color: rgb(249 250 251) !important;
-          color: rgb(17 24 39) !important;
-          -webkit-text-fill-color: rgb(17 24 39) !important;
-          caret-color: rgb(17 24 39) !important;
+          box-shadow: 0 0 0 1000px #f0e6d6 inset !important;
+          -webkit-box-shadow: 0 0 0 1000px #f0e6d6 inset !important;
+          background-color: #f0e6d6 !important;
+          color: #2a2118 !important;
+          -webkit-text-fill-color: #2a2118 !important;
+          caret-color: #2a2118 !important;
           transition: background-color 5000s ease-in-out 0s;
         }
 
@@ -197,18 +197,18 @@ function AuthPage() {
         .dark .auth-input:-webkit-autofill:focus,
         .dark .auth-input:-webkit-autofill:active,
         .dark .auth-input:-internal-autofill-selected {
-          box-shadow: 0 0 0 1000px rgb(55 65 81) inset !important;
-          -webkit-box-shadow: 0 0 0 1000px rgb(55 65 81) inset !important;
-          background-color: rgb(55 65 81) !important;
-          color: rgb(255 255 255) !important;
-          -webkit-text-fill-color: rgb(255 255 255) !important;
-          caret-color: rgb(255 255 255) !important;
+          box-shadow: 0 0 0 1000px #2f2b26 inset !important;
+          -webkit-box-shadow: 0 0 0 1000px #2f2b26 inset !important;
+          background-color: #2f2b26 !important;
+          color: #f0e6d6 !important;
+          -webkit-text-fill-color: #f0e6d6 !important;
+          caret-color: #f0e6d6 !important;
         }
       `}</style>
-      <section className="bg-[#fcfaf8] dark:bg-gray-950 min-h-screen flex items-center justify-center p-4 transition-colors duration-300">
-      <div className="w-full bg-white rounded-3xl border border-amber-900/10 dark:border-gray-800 dark:bg-gray-900 shadow-xl shadow-amber-950/5 dark:shadow-black/30 sm:max-w-md xl:p-0">
+      <section className="bg-paper dark:bg-gray-950 min-h-screen flex items-center justify-center p-4 transition-colors duration-300">
+      <div className="w-full bg-paper-elevated rounded-3xl border border-amber-900/10 dark:border-gray-800 dark:bg-gray-900 shadow-xl shadow-amber-950/8 dark:shadow-black/30 sm:max-w-md xl:p-0">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1 className="text-xl font-bold leading-tight tracking-tight text-amber-950 md:text-2xl dark:text-amber-100 text-center">
+          <h1 className="font-serif text-xl font-bold leading-tight tracking-tight text-amber-950 md:text-2xl dark:text-amber-100 text-center">
             {isLogin ? "Sign in to your account" : "Create your account"}
           </h1>
 
@@ -232,7 +232,7 @@ function AuthPage() {
                   required
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="auth-input bg-gray-50 border border-amber-900/10 text-gray-900 rounded-xl block w-full p-2.5 dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:ring-amber-500 focus:border-amber-500 focus:outline-none"
+                  className="auth-input bg-amber-50 border border-amber-900/10 text-amber-950 rounded-xl block w-full p-2.5 dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:ring-amber-500 focus:border-amber-500 focus:outline-none"
                   placeholder="John Doe"
                 />
               </div>
@@ -248,7 +248,7 @@ function AuthPage() {
                 required
                 value={formData.email}
                 onChange={handleInputChange}
-                className="auth-input bg-gray-50 border border-amber-900/10 text-gray-900 rounded-xl block w-full p-2.5 dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:ring-amber-500 focus:border-amber-500 focus:outline-none"
+                className="auth-input bg-amber-50 border border-amber-900/10 text-amber-950 rounded-xl block w-full p-2.5 dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:ring-amber-500 focus:border-amber-500 focus:outline-none"
                 placeholder="name@company.com"
               />
             </div>
@@ -264,7 +264,7 @@ function AuthPage() {
                   required
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="auth-input bg-gray-50 border border-amber-900/10 text-gray-900 rounded-xl block w-full p-2.5 pr-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:ring-amber-500 focus:border-amber-500 focus:outline-none"
+                  className="auth-input bg-amber-50 border border-amber-900/10 text-amber-950 rounded-xl block w-full p-2.5 pr-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:ring-amber-500 focus:border-amber-500 focus:outline-none"
                   placeholder="••••••••"
                 />
                 <button
@@ -299,7 +299,7 @@ function AuthPage() {
                     required
                     value={formData.confirmPassword}
                     onChange={handleInputChange}
-                    className="auth-input bg-gray-50 border border-amber-900/10 text-gray-900 rounded-xl block w-full p-2.5 pr-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:ring-amber-500 focus:border-amber-500 focus:outline-none"
+                    className="auth-input bg-amber-50 border border-amber-900/10 text-amber-950 rounded-xl block w-full p-2.5 pr-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:ring-amber-500 focus:border-amber-500 focus:outline-none"
                     placeholder="••••••••"
                   />
                   <button
