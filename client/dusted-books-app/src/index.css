@@ -2,16 +2,109 @@
 
 @variant dark (&:where(.dark, .dark *));
 
-/* Book-marketplace typography:
-   - Lora → warm literary serif for titles & brand
-   - Outfit → clean, human UI / body copy */
+/* ═══════════════════════════════════════════════════════════════════════════
+   DustedBooks — preloved bookstore palette
+   Warm parchment · aged leather · brass · espresso ink · library shelf
+   Professional, literary, second-hand market — not candy-orange amber.
+   ═══════════════════════════════════════════════════════════════════════════ */
 @theme {
+  /* Typography */
   --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --font-serif: "Lora", ui-serif, Georgia, "Times New Roman", serif;
   --font-display: "Lora", ui-serif, Georgia, "Times New Roman", serif;
+
+  /* ── Semantic surfaces ── */
+  --color-paper: #f5efe4;           /* page / app canvas */
+  --color-paper-elevated: #fbf7f0;  /* cards on paper */
+  --color-paper-muted: #ebe3d4;     /* muted wells / image placeholders */
+  --color-ink: #2a2118;             /* primary text */
+  --color-shelf: #2c2419;           /* dark CTA panels, library wood */
+  --color-shelf-deep: #1a1510;      /* deepest overlays */
+  --color-brass: #b8925e;           /* highlight metal */
+  --color-leather: #7d5a36;         /* primary brand mid */
+
+  /* ── Amber remapped → leather / brass / parchment ──
+     Existing amber-* utilities keep working; hue shifts from neon orange
+     to professional second-hand bookstore tones. */
+  --color-amber-50: #faf6ef;
+  --color-amber-100: #f0e6d6;
+  --color-amber-200: #e0ceb4;
+  --color-amber-300: #cbb08a;
+  --color-amber-400: #b8925e;
+  --color-amber-500: #9c7544;
+  --color-amber-600: #7d5a36;
+  --color-amber-700: #65482c;
+  --color-amber-800: #4f3824;
+  --color-amber-900: #3a291b;
+  --color-amber-950: #241910;
+
+  /* ── Orange remapped → soft copper (hero dust / gradients) ── */
+  --color-orange-50: #faf5ef;
+  --color-orange-100: #f2e6d6;
+  --color-orange-200: #e4cbb0;
+  --color-orange-300: #d0ab84;
+  --color-orange-400: #b8885c;
+  --color-orange-500: #9a6a42;
+  --color-orange-600: #7d5334;
+  --color-orange-700: #65422a;
+  --color-orange-800: #4f3422;
+  --color-orange-900: #3a2619;
+  --color-orange-950: #22160f;
+
+  /* ── Gray remapped → warm charcoal (bookstore dark mode) ── */
+  --color-gray-50: #faf8f5;
+  --color-gray-100: #f2efe9;
+  --color-gray-200: #e4dfd6;
+  --color-gray-300: #cdc5b8;
+  --color-gray-400: #a89e90;
+  --color-gray-500: #7d7468;
+  --color-gray-600: #5c554b;
+  --color-gray-700: #454039;
+  --color-gray-800: #2f2b26;
+  --color-gray-900: #1f1b17;
+  --color-gray-950: #14110e;
+
+  /* ── Stone warmed slightly for CTA text on brass buttons ── */
+  --color-stone-50: #faf8f5;
+  --color-stone-100: #f3efe8;
+  --color-stone-200: #e5ddd1;
+  --color-stone-300: #d0c4b3;
+  --color-stone-400: #a89884;
+  --color-stone-500: #7d6e5c;
+  --color-stone-600: #5c5044;
+  --color-stone-700: #463e35;
+  --color-stone-800: #302b25;
+  --color-stone-900: #221e1a;
+  --color-stone-950: #14110e;
+
+  /* ── Olive → dusty library sage (admin sidebar) ── */
+  --color-olive-50: #f5f4ee;
+  --color-olive-100: #e8e5d8;
+  --color-olive-200: #d4cfb8;
+  --color-olive-300: #c0b99a;
+  --color-olive-400: #a39a78;
+  --color-olive-500: #8a8164;
+  --color-olive-600: #6f684f;
+  --color-olive-700: #585340;
+  --color-olive-800: #464234;
+  --color-olive-900: #3a372c;
+  --color-olive-950: #1f1d17;
+
+  /* ── Slate warmed (book cards used slate borders) ── */
+  --color-slate-50: #f8f6f3;
+  --color-slate-100: #f0ece6;
+  --color-slate-200: #ddd6cc;
+  --color-slate-300: #c2b8aa;
+  --color-slate-400: #9a8f81;
+  --color-slate-500: #766c60;
+  --color-slate-600: #5a5249;
+  --color-slate-700: #48423b;
+  --color-slate-800: #3b362f;
+  --color-slate-900: #2f2b26;
+  --color-slate-950: #1a1714;
 }
 
-/* index.css */
+/* ── Base layout ── */
 html, body, #root {
   margin: 0;
   padding: 0;
@@ -28,6 +121,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+
+html.dark body {
+  background-color: var(--color-gray-950);
+  color: var(--color-amber-100);
 }
 
 /* Literary serif for headings — classic bookstore feel */
@@ -46,6 +146,12 @@ h1, h2, h3 {
 
 .font-serif {
   font-family: var(--font-serif);
+}
+
+/* Soft selection — ink on parchment */
+::selection {
+  background-color: color-mix(in srgb, var(--color-amber-800) 85%, transparent);
+  color: #fff;
 }
 
 /* ── Customer Hero slideshow ── */
