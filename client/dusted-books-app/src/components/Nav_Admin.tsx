@@ -39,22 +39,22 @@ function NavAdmin() {
   const linkStyles = ({ isActive }: { isActive: boolean }) =>
     `block py-2.5 px-4 transition-all duration-200 ${
       isActive
-        ? "bg-white/40 dark:bg-white/10 font-semibold border-l-4 border-black dark:border-amber-400 text-black dark:text-amber-300"
-        : "hover:bg-white/20 dark:hover:bg-white/10 text-zinc-800 dark:text-zinc-200 border-l-4 border-transparent hover:border-black/30 dark:hover:border-amber-400/50"
+        ? "bg-paper-elevated/80 dark:bg-white/10 font-semibold border-l-4 border-amber-800 dark:border-amber-400 text-amber-950 dark:text-amber-300"
+        : "hover:bg-paper-elevated/50 dark:hover:bg-white/10 text-amber-900/80 dark:text-zinc-200 border-l-4 border-transparent hover:border-amber-700/40 dark:hover:border-amber-400/50"
     }`;
 
   const subLinkStyles = ({ isActive }: { isActive: boolean }) =>
     `pl-10 block py-2 px-4 transition-all duration-200 text-sm ${
-      isActive 
-        ? "bg-white/20 dark:bg-white/10 font-medium text-black dark:text-amber-300 border-l-4 border-black/50 dark:border-amber-400" 
-        : "hover:bg-white/10 text-zinc-700 dark:text-zinc-300 border-l-4 border-transparent"
+      isActive
+        ? "bg-paper-elevated/60 dark:bg-white/10 font-medium text-amber-950 dark:text-amber-300 border-l-4 border-amber-700/60 dark:border-amber-400"
+        : "hover:bg-paper-elevated/40 dark:hover:bg-white/10 text-amber-900/70 dark:text-zinc-300 border-l-4 border-transparent"
     }`;
 
   return (
     <>
       <button
         type="button"
-        className="fixed left-4 top-4 z-50 inline-flex items-center justify-center rounded-md bg-olive-500 dark:bg-gray-700 p-2.5 text-black dark:text-white shadow-md xl:hidden hover:bg-olive-600 dark:hover:bg-gray-600 transition-colors"
+        className="fixed left-4 top-4 z-50 inline-flex items-center justify-center rounded-md bg-amber-700 dark:bg-gray-700 p-2.5 text-white dark:text-white shadow-md xl:hidden hover:bg-amber-600 dark:hover:bg-gray-600 transition-colors"
         aria-label="Toggle admin navigation"
         aria-expanded={isMobileOpen}
         onClick={() => setIsMobileOpen((current) => !current)}
@@ -65,7 +65,7 @@ function NavAdmin() {
       </button>
 
       <div
-        className={`nav-admin fixed inset-y-0 left-0 z-40 flex h-screen w-4/5 max-w-[280px] flex-col bg-olive-300 dark:bg-gray-900 text-black dark:text-gray-100 shadow-2xl transition-transform duration-300 ease-in-out xl:w-64 xl:max-w-none xl:translate-x-0 xl:shadow-none ${
+        className={`nav-admin fixed inset-y-0 left-0 z-40 flex h-screen w-4/5 max-w-[280px] flex-col bg-paper-muted dark:bg-gray-900 text-amber-950 dark:text-gray-100 shadow-2xl transition-transform duration-300 ease-in-out xl:w-64 xl:max-w-none xl:translate-x-0 xl:shadow-none ${
           isMobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -122,10 +122,10 @@ function NavAdmin() {
           </nav>
         </div>
 
-        <div id="btm-nav" className="mt-auto flex flex-col gap-4 bg-olive-500 dark:bg-gray-800 p-5 xl:flex-row xl:items-center xl:justify-between xl:gap-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] dark:shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.3)]">
-          <div className="flex items-center gap-3 text-white min-w-0">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white dark:bg-gray-700 shadow-inner">
-              <span className="font-bold text-lg text-olive-600 dark:text-amber-400">
+        <div id="btm-nav" className="mt-auto flex flex-col gap-4 bg-shelf dark:bg-gray-800 p-5 xl:flex-row xl:items-center xl:justify-between xl:gap-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] dark:shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.3)]">
+          <div className="flex items-center gap-3 text-amber-50 min-w-0">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-paper-elevated dark:bg-gray-700 shadow-inner">
+              <span className="font-bold text-lg text-amber-800 dark:text-amber-400">
                 {user?.email?.charAt(0).toUpperCase()}
               </span>
             </div>
