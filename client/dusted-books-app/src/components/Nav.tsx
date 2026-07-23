@@ -83,8 +83,8 @@ function Nav() {
     <nav
       className={`fixed top-0 left-0 right-0 max-w-full z-[999] transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b border-amber-900/10 dark:border-gray-700/50 shadow-md py-3"
-          : "bg-[#fcfaf8]/95 dark:bg-gray-900/90 py-5 shadow-sm"
+          ? "bg-paper-elevated/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b border-amber-900/10 dark:border-gray-700/50 shadow-md py-3"
+          : "bg-paper/95 dark:bg-gray-900/90 py-5 shadow-sm"
       }`}
     >
       <div className="container flex flex-wrap items-center justify-between mx-auto text-amber-950 dark:text-amber-100 lg:w-[80%] px-6">
@@ -289,7 +289,7 @@ function Nav() {
 
                 <div
                   id="account-dropdown"
-                  className={`w-full lg:absolute lg:right-0 lg:top-[120%] mt-2 lg:w-48 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl border border-zinc-200 dark:border-gray-700 z-50 origin-top-right transition-all duration-200 ease-out ${
+                  className={`w-full lg:absolute lg:right-0 lg:top-[120%] mt-2 lg:w-48 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] bg-paper-elevated/95 dark:bg-gray-800/95 backdrop-blur-xl border border-zinc-200 dark:border-gray-700 z-50 origin-top-right transition-all duration-200 ease-out ${
                     accountDropdownOpen
                       ? "scale-100 opacity-100 visible translate-y-0 h-auto"
                       : "scale-95 opacity-0 invisible -translate-y-2 h-0 overflow-hidden"
