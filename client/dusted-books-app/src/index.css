@@ -3,12 +3,12 @@
 @variant dark (&:where(.dark, .dark *));
 
 /* Book-marketplace typography:
-   - Playfair Display → literary, eye-catching titles & brand
-   - Source Sans 3 → warm, highly readable UI / body copy */
+   - Lora → warm literary serif for titles & brand
+   - Outfit → clean, human UI / body copy */
 @theme {
-  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  --font-serif: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
-  --font-display: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-serif: "Lora", ui-serif, Georgia, "Times New Roman", serif;
+  --font-display: "Lora", ui-serif, Georgia, "Times New Roman", serif;
 }
 
 /* index.css */
@@ -24,6 +24,7 @@ html, body, #root {
 
 body {
   font-family: var(--font-sans);
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -32,13 +33,19 @@ body {
 /* Literary serif for headings — classic bookstore feel */
 h1, h2, h3 {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 /* Brand wordmark utility — use on logo text */
 .font-brand {
   font-family: var(--font-display);
-  letter-spacing: 0.02em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
 }
 
 /* ── Customer Hero slideshow ── */
