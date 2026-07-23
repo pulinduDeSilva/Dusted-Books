@@ -72,7 +72,7 @@ function NavAdmin() {
       >
         <div id="top-nav" className="flex flex-1 flex-col overflow-y-auto">
           <div className="m-4 flex items-center justify-center py-4 border-b border-black/10 dark:border-gray-700">
-            <h1 className="font-bold text-lg tracking-wider dark:text-white">DUSTEDBOOKS <span className="font-light">Admin</span></h1>
+            <h1 className="font-brand font-bold text-lg tracking-wider dark:text-white">DUSTEDBOOKS <span className="font-light font-sans">Admin</span></h1>
           </div>
 
           <nav className="flex flex-col py-2">
