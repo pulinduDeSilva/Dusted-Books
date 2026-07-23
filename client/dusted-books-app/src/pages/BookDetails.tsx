@@ -106,31 +106,33 @@ function BookDetails() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fcfaf8] text-amber-950 dark:bg-gray-950 dark:text-amber-100 overflow-x-hidden w-full max-w-full">
+    <div className="min-h-screen bg-paper text-amber-950 dark:bg-gray-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white overflow-x-hidden w-full max-w-full">
       <Nav />
 
       <main className="mx-auto flex max-w-6xl flex-col gap-6 px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pt-32">
         <button
           type="button"
           onClick={() => navigate(-1)}
-          className="w-fit rounded-full border border-amber-700/20 px-4 py-2 text-sm font-medium text-amber-700 transition hover:bg-amber-50 dark:border-amber-400/30 dark:text-amber-200 dark:hover:bg-gray-800"
+          className="w-fit rounded-full border border-amber-700/30 px-4 py-2 text-sm font-medium text-amber-800 transition hover:bg-amber-50 dark:border-amber-400/30 dark:text-amber-200 dark:hover:bg-gray-800"
         >
           ← Back
         </button>
 
         {loading ? (
-          <div className="rounded-3xl border border-stone-200 bg-white p-8 text-center shadow-sm dark:border-gray-700 dark:bg-gray-900">
-            <p className="text-lg font-semibold">Loading book details...</p>
+          <div className="rounded-3xl border border-amber-900/10 bg-paper-elevated p-8 text-center shadow-sm shadow-amber-950/5 dark:border-gray-700 dark:bg-gray-900 dark:shadow-black/20">
+            <p className="text-lg font-semibold text-amber-950 dark:text-amber-100">
+              Loading book details...
+            </p>
           </div>
         ) : error || !book ? (
-          <div className="rounded-3xl border border-stone-200 bg-white p-8 text-center shadow-sm dark:border-gray-700 dark:bg-gray-900">
-            <p className="text-lg font-semibold text-amber-700 dark:text-amber-300">
+          <div className="rounded-3xl border border-amber-900/10 bg-paper-elevated p-8 text-center shadow-sm shadow-amber-950/5 dark:border-gray-700 dark:bg-gray-900 dark:shadow-black/20">
+            <p className="text-lg font-semibold text-amber-800 dark:text-amber-300">
               {error || "Book not found."}
             </p>
           </div>
         ) : (
-          <section className="grid gap-6 rounded-3xl border border-stone-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900 lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
-            <div className="flex items-center justify-center rounded-3xl bg-gradient-to-br from-amber-50 via-orange-50 to-white p-4 dark:from-gray-800 dark:via-gray-750 dark:to-gray-800">
+          <section className="grid gap-6 rounded-3xl border border-amber-900/10 bg-paper-elevated p-6 shadow-sm shadow-amber-950/5 dark:border-gray-700 dark:bg-gray-900 dark:shadow-black/20 lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
+            <div className="flex items-center justify-center rounded-3xl bg-gradient-to-br from-amber-50 via-paper-muted to-paper-elevated p-4 dark:from-gray-800 dark:via-gray-800 dark:to-gray-700">
               <img
                 src={
                   book.imgUrl ||
@@ -147,31 +149,31 @@ function BookDetails() {
                   {book.category?.map((category) => (
                     <span
                       key={category}
-                      className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-amber-700 dark:bg-amber-900/40 dark:text-amber-300"
+                      className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-amber-800 dark:bg-amber-900/40 dark:text-amber-300"
                     >
                       {category}
                     </span>
                   )) || (
-                    <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">
+                    <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
                       Featured
                     </span>
                   )}
                 </div>
 
-                <h1 className="text-3xl font-bold text-stone-900 dark:text-gray-50">
+                <h1 className="font-serif text-3xl font-bold text-amber-950 dark:text-amber-50">
                   {book.title}
                 </h1>
-                <p className="mt-2 text-lg text-stone-600 dark:text-gray-400">
+                <p className="mt-2 text-lg text-amber-900/60 dark:text-amber-200/50">
                   by {book.author}
                 </p>
-                <p className="mt-4 text-base leading-7 text-stone-700 dark:text-gray-300">
+                <p className="mt-4 text-base leading-7 text-amber-900/70 dark:text-amber-200/55">
                   {book.description}
                 </p>
-                <div className="mt-6 rounded-2xl border border-stone-200 bg-stone-50 p-4 dark:border-gray-700 dark:bg-gray-800/70">
-                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone-500 dark:text-gray-400">
+                <div className="mt-6 rounded-2xl border border-amber-900/10 bg-amber-50 p-4 dark:border-gray-700 dark:bg-gray-800/70">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700/70 dark:text-amber-300/70">
                     Condition
                   </p>
-                  <p className="mt-1 text-base font-medium text-stone-800 dark:text-gray-200">
+                  <p className="mt-1 text-base font-medium text-amber-950 dark:text-amber-100">
                     {book.condition || "Good condition copy"}
                   </p>
                 </div>
@@ -179,10 +181,10 @@ function BookDetails() {
 
               <div className="mt-8 flex flex-col gap-4">
                 <div className="flex items-center justify-between rounded-2xl bg-amber-50 px-4 py-3 dark:bg-amber-900/20">
-                  <span className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700 dark:text-amber-300">
+                  <span className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-800 dark:text-amber-300">
                     Price
                   </span>
-                  <span className="text-2xl font-bold text-amber-700 dark:text-amber-300">
+                  <span className="text-2xl font-bold text-amber-800 dark:text-amber-300">
                     {formatPrice(book.price)}
                   </span>
                 </div>
@@ -191,7 +193,7 @@ function BookDetails() {
                   <button
                     type="button"
                     onClick={handleBuy}
-                    className="rounded-full bg-amber-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-600"
+                    className="rounded-full bg-amber-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
                   >
                     Buy Now
                   </button>
@@ -199,7 +201,11 @@ function BookDetails() {
                     type="button"
                     onClick={handleAddToCart}
                     disabled={itemInCart}
-                    className={`rounded-full border px-5 py-2.5 text-sm font-semibold transition ${itemInCart ? "cursor-not-allowed border-amber-300 bg-amber-100 text-amber-900 dark:border-gray-600 dark:bg-gray-700 dark:text-amber-300" : "border-amber-700 text-amber-700 hover:bg-amber-50 dark:border-amber-400 dark:text-amber-200 dark:hover:bg-gray-800"}`}
+                    className={`rounded-full border px-5 py-2.5 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-amber-500/40 ${
+                      itemInCart
+                        ? "cursor-not-allowed border-amber-300 bg-amber-100 text-amber-900 dark:border-gray-600 dark:bg-gray-700 dark:text-amber-300"
+                        : "border-amber-700/80 text-amber-800 hover:bg-amber-50 dark:border-amber-400/70 dark:text-amber-200 dark:hover:bg-gray-800"
+                    }`}
                   >
                     {itemInCart ? "In Cart" : "Add to Cart"}
                   </button>
