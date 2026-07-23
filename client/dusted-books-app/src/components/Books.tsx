@@ -82,7 +82,7 @@ const Books = () => {
               }}
               tabIndex={0}
               role="button"
-              className="cursor-pointer rounded-xl border border-stone-200 bg-white p-3 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:shadow-black/20"
+              className="cursor-pointer rounded-xl border border-amber-900/10 bg-paper-elevated p-3 shadow-sm shadow-amber-950/5 transition hover:-translate-y-1 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:shadow-black/20"
             >
               <div className="mb-3 flex items-center justify-between text-xs">
                 <span className="rounded-full bg-amber-100 dark:bg-amber-900/40 px-2 py-1 font-medium text-amber-700 dark:text-amber-300">
@@ -90,7 +90,7 @@ const Books = () => {
                 </span>
               </div>
 
-              <div className="flex min-h-[220px] items-center justify-center rounded-lg bg-[#f8f3e8] dark:bg-gray-700/50 p-3">
+              <div className="flex min-h-[220px] items-center justify-center rounded-lg bg-paper-muted dark:bg-gray-700/50 p-3">
                 <img
                   className="max-h-48 w-full object-contain"
                   src={book.imgUrl}
