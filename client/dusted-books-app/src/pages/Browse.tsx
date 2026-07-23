@@ -165,12 +165,12 @@ function Browse() {
     sortOptions.find((o) => o.value === sortBy)?.label ?? "Featured";
 
   return (
-    <div className="min-h-screen bg-[#fcfaf8] dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white overflow-x-hidden w-full max-w-full">
+    <div className="min-h-screen bg-paper dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white overflow-x-hidden w-full max-w-full">
       <Nav />
 
       <main className="mx-auto max-w-7xl px-4 pb-24 pt-28 sm:px-6 lg:px-8 lg:pt-32">
         {/* ── Hero Banner ── */}
-        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#4a3625] via-[#3a2818] to-[#2a1c10] dark:from-gray-800 dark:via-gray-850 dark:to-gray-900 p-8 text-white shadow-2xl shadow-amber-900/20 dark:shadow-black/40 sm:p-12 lg:p-16 isolate">
+        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-800 via-shelf to-shelf-deep dark:from-gray-800 dark:via-gray-850 dark:to-gray-900 p-8 text-white shadow-2xl shadow-amber-900/20 dark:shadow-black/40 sm:p-12 lg:p-16 isolate">
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-amber-500/10 blur-3xl mix-blend-screen pointer-events-none" />
           <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-amber-600/10 blur-3xl mix-blend-screen pointer-events-none" />
 
@@ -194,7 +194,7 @@ function Browse() {
         <section className="mt-6 space-y-4">
           {/* Search Row */}
           <div
-            className={`group relative flex items-center gap-3 rounded-2xl border bg-white dark:bg-gray-900 px-5 py-1 shadow-sm transition-all duration-300 ${
+            className={`group relative flex items-center gap-3 rounded-2xl border bg-paper-elevated dark:bg-gray-900 px-5 py-1 shadow-sm transition-all duration-300 ${
               searchFocused
                 ? "border-amber-500/60 dark:border-amber-500/50 shadow-lg shadow-amber-500/10 dark:shadow-amber-500/5 ring-4 ring-amber-500/10 dark:ring-amber-500/10"
                 : "border-amber-900/10 dark:border-gray-700 hover:border-amber-900/20 dark:hover:border-gray-600 hover:shadow-md"
@@ -256,7 +256,7 @@ function Browse() {
                     className={`group relative inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-200 select-none ${
                       isActive
                         ? "bg-gradient-to-r from-amber-700 to-amber-600 dark:from-amber-600 dark:to-amber-500 text-white shadow-md shadow-amber-700/25 dark:shadow-amber-500/20 scale-105"
-                        : "bg-white dark:bg-gray-900 border border-amber-900/10 dark:border-gray-700 text-amber-800 dark:text-amber-200 hover:border-amber-400/50 dark:hover:border-amber-500/50 hover:text-amber-900 dark:hover:text-amber-100 hover:bg-amber-50/80 dark:hover:bg-gray-800 hover:scale-[1.03] active:scale-100"
+                        : "bg-paper-elevated dark:bg-gray-900 border border-amber-900/10 dark:border-gray-700 text-amber-800 dark:text-amber-200 hover:border-amber-400/50 dark:hover:border-amber-500/50 hover:text-amber-900 dark:hover:text-amber-100 hover:bg-amber-50/80 dark:hover:bg-gray-800 hover:scale-[1.03] active:scale-100"
                     }`}
                   >
                     {category}
@@ -279,7 +279,7 @@ function Browse() {
                 className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
                   sortOpen
                     ? "border-amber-500/60 dark:border-amber-500/50 bg-amber-50 dark:bg-gray-800 text-amber-800 dark:text-amber-200 shadow-md"
-                    : "border-amber-900/10 dark:border-gray-700 bg-white dark:bg-gray-900 text-amber-800 dark:text-amber-200 hover:border-amber-400/50 dark:hover:border-gray-600 hover:bg-amber-50/50 dark:hover:bg-gray-800"
+                    : "border-amber-900/10 dark:border-gray-700 bg-paper-elevated dark:bg-gray-900 text-amber-800 dark:text-amber-200 hover:border-amber-400/50 dark:hover:border-gray-600 hover:bg-amber-50/50 dark:hover:bg-gray-800"
                 }`}
               >
                 <SortIcon className="h-4 w-4 text-amber-600 dark:text-amber-400" />
@@ -302,7 +302,7 @@ function Browse() {
 
               {/* Dropdown menu */}
               <div
-                className={`absolute right-0 top-full mt-2 w-52 rounded-2xl border border-amber-900/10 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-xl shadow-amber-900/10 dark:shadow-black/40 z-50 overflow-hidden origin-top-right transition-all duration-200 ${
+                className={`absolute right-0 top-full mt-2 w-52 rounded-2xl border border-amber-900/10 dark:border-gray-700 bg-paper-elevated/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-xl shadow-amber-900/10 dark:shadow-black/40 z-50 overflow-hidden origin-top-right transition-all duration-200 ${
                   sortOpen
                     ? "scale-100 opacity-100 translate-y-0"
                     : "scale-95 opacity-0 pointer-events-none -translate-y-2"
@@ -431,7 +431,7 @@ function Browse() {
           )}
 
           {!loading && !error && filteredBooks.length === 0 && (
-            <div className="rounded-3xl border-2 border-dashed border-amber-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-14 text-center">
+            <div className="rounded-3xl border-2 border-dashed border-amber-200 dark:border-gray-700 bg-paper-elevated dark:bg-gray-900 p-14 text-center">
               <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-50 dark:bg-amber-900/20">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
