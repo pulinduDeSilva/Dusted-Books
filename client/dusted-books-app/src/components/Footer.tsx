@@ -4,6 +4,13 @@ import logoImage from "../assets/db logo.png";
 
 const browseCategories = ["Fiction", "Non-Fiction", "Mystery", "Self Help"];
 
+const contactPhones = [
+  { display: "077 496 5624", tel: "0774965624", wa: "94774965624" },
+  { display: "078 390 7616", tel: "0783907616", wa: "94783907616" },
+] as const;
+
+const contactEmail = "dustedbooks130@gmail.com";
+
 const socialLinks = [
   {
     name: "Facebook",
@@ -11,7 +18,7 @@ const socialLinks = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5"
+        className="h-4 w-4"
         fill="currentColor"
         viewBox="0 0 24 24"
         aria-hidden="true"
@@ -26,7 +33,7 @@ const socialLinks = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5"
+        className="h-4 w-4"
         fill="currentColor"
         viewBox="0 0 24 24"
         aria-hidden="true"
@@ -41,7 +48,7 @@ const socialLinks = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5"
+        className="h-4 w-4"
         fill="currentColor"
         viewBox="0 0 24 24"
         aria-hidden="true"
@@ -56,27 +63,27 @@ function Footer() {
   const { user } = useAuth();
 
   return (
-    <footer className="border-t border-amber-900/10 bg-white px-5 pb-8 pt-10 dark:border-gray-800 dark:bg-gray-900/50 sm:px-6 sm:pt-12">
+    <footer className="border-t border-amber-900/10 bg-white px-5 py-10 dark:border-gray-800 dark:bg-gray-900/50 sm:px-6 sm:py-12">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-6">
           {/* Brand + socials */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <div className="sm:col-span-2 lg:col-span-4">
             <div className="mb-3 flex items-center gap-2.5">
               <img
                 src={logoImage}
                 alt="DustedBooks"
                 className="h-9 w-9 object-contain"
               />
-              <span className="font-brand bg-gradient-to-r from-amber-900 to-amber-700 bg-clip-text text-lg font-bold text-transparent dark:from-amber-400 dark:to-amber-300">
+              <span className="font-brand text-lg font-semibold text-amber-950 dark:text-amber-100">
                 DustedBooks
               </span>
             </div>
-            <p className="text-sm leading-relaxed text-amber-900/50 dark:text-amber-200/40">
+            <p className="max-w-sm text-sm leading-relaxed text-amber-900/50 dark:text-amber-200/40">
               Sri Lanka&apos;s marketplace for pre-loved books. Buy, sell, and
               request titles — and give every story a second life.
             </p>
 
-            <div className="mt-4 flex items-center gap-2.5">
+            <div className="mt-4 flex items-center gap-2">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
@@ -84,7 +91,7 @@ function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`DustedBooks on ${social.name}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-amber-900/10 bg-[#fcfaf8] text-amber-800/60 transition-all hover:-translate-y-0.5 hover:border-amber-600/40 hover:bg-amber-50 hover:text-amber-700 hover:shadow-md hover:shadow-amber-900/5 dark:border-gray-700 dark:bg-gray-800 dark:text-amber-200/60 dark:hover:bg-amber-900/20 dark:hover:text-amber-300"
+                  className="flex h-9 w-9 items-center justify-center rounded-md border border-amber-900/10 bg-[#fcfaf8] text-amber-800/55 transition-colors hover:border-amber-700/25 hover:bg-amber-50 hover:text-amber-800 dark:border-gray-700 dark:bg-gray-800 dark:text-amber-200/55 dark:hover:bg-gray-700 dark:hover:text-amber-200"
                 >
                   {social.icon}
                 </a>
@@ -93,24 +100,24 @@ function Footer() {
           </div>
 
           {/* Explore */}
-          <div>
-            <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-amber-900/70 dark:text-amber-200/60">
+          <div className="lg:col-span-2">
+            <h4 className="mb-3 text-[12px] font-medium tracking-[0.12em] text-amber-900/55 uppercase dark:text-amber-200/50">
               Explore
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
                   to="/browse"
-                  className="text-amber-900/50 transition-colors hover:text-amber-700 dark:text-amber-200/40 dark:hover:text-amber-400"
+                  className="text-amber-900/60 transition-colors hover:text-amber-800 dark:text-amber-200/50 dark:hover:text-amber-300"
                 >
-                  Browse Books
+                  Browse books
                 </Link>
               </li>
               {browseCategories.map((cat) => (
                 <li key={cat}>
                   <Link
                     to={`/browse?category=${encodeURIComponent(cat)}`}
-                    className="text-amber-900/50 transition-colors hover:text-amber-700 dark:text-amber-200/40 dark:hover:text-amber-400"
+                    className="text-amber-900/60 transition-colors hover:text-amber-800 dark:text-amber-200/50 dark:hover:text-amber-300"
                   >
                     {cat}
                   </Link>
@@ -120,8 +127,8 @@ function Footer() {
           </div>
 
           {/* Account */}
-          <div>
-            <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-amber-900/70 dark:text-amber-200/60">
+          <div className="lg:col-span-2">
+            <h4 className="mb-3 text-[12px] font-medium tracking-[0.12em] text-amber-900/55 uppercase dark:text-amber-200/50">
               Account
             </h4>
             <ul className="space-y-2 text-sm">
@@ -130,68 +137,103 @@ function Footer() {
                   <li>
                     <Link
                       to="/login"
-                      className="text-amber-900/50 transition-colors hover:text-amber-700 dark:text-amber-200/40 dark:hover:text-amber-400"
+                      className="text-amber-900/60 transition-colors hover:text-amber-800 dark:text-amber-200/50 dark:hover:text-amber-300"
                     >
-                      Sign In
+                      Sign in
                     </Link>
                   </li>
                   <li>
                     <Link
                       to="/signup"
-                      className="font-semibold text-amber-800 transition-colors hover:text-amber-600 dark:text-amber-300 dark:hover:text-amber-200"
+                      className="text-amber-900/60 transition-colors hover:text-amber-800 dark:text-amber-200/50 dark:hover:text-amber-300"
                     >
-                      Create Account
+                      Create account
                     </Link>
                   </li>
                 </>
               )}
               <li>
                 <Link
-                  to="/sell-book"
-                  className="text-amber-900/50 transition-colors hover:text-amber-700 dark:text-amber-200/40 dark:hover:text-amber-400"
-                >
-                  Sell Your Books
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/my-requests"
-                  className="text-amber-900/50 transition-colors hover:text-amber-700 dark:text-amber-200/40 dark:hover:text-amber-400"
+                  className="text-amber-900/60 transition-colors hover:text-amber-800 dark:text-amber-200/50 dark:hover:text-amber-300"
                 >
-                  Request a Book
+                  Request a book
                 </Link>
               </li>
-              {user && (
-                <li>
-                  <Link
-                    to="/my-sell-requests"
-                    className="text-amber-900/50 transition-colors hover:text-amber-700 dark:text-amber-200/40 dark:hover:text-amber-400"
-                  >
-                    My Sell Requests
-                  </Link>
-                </li>
-              )}
             </ul>
           </div>
 
-          {/* About */}
-          <div>
-            <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-amber-900/70 dark:text-amber-200/60">
-              About
+          {/* Contact */}
+          <div id="contact-us" className="sm:col-span-2 lg:col-span-4">
+            <h4 className="mb-3 text-[12px] font-medium tracking-[0.12em] text-amber-900/55 uppercase dark:text-amber-200/50">
+              Contact
             </h4>
-            <p className="text-sm leading-relaxed text-amber-900/50 dark:text-amber-200/40">
-              Every book we sell is condition-checked and fairly priced.
-              Selling? We arrange pickup from your location.
+            <p className="mb-4 text-sm leading-relaxed text-amber-900/50 dark:text-amber-200/40">
+              Selling books or need help? Reach us by phone, WhatsApp, or email.
             </p>
+
+            <div className="space-y-4">
+              <div>
+                <p className="mb-2 text-[11px] font-medium tracking-wide text-amber-900/40 dark:text-amber-200/35">
+                  Phone
+                </p>
+                <ul className="space-y-2.5">
+                  {contactPhones.map((phone) => (
+                    <li
+                      key={phone.tel}
+                      className="flex flex-wrap items-center gap-x-3 gap-y-1.5"
+                    >
+                      <span className="min-w-[7.5rem] text-sm font-medium tabular-nums text-amber-950 dark:text-amber-100">
+                        {phone.display}
+                      </span>
+                      <span className="flex items-center gap-2">
+                        <a
+                          href={`tel:${phone.tel}`}
+                          className="text-xs font-medium text-amber-800/70 underline decoration-amber-900/15 underline-offset-2 transition-colors hover:text-amber-900 hover:decoration-amber-900/40 dark:text-amber-200/60 dark:hover:text-amber-200"
+                        >
+                          Call
+                        </a>
+                        <span
+                          className="text-amber-900/15 dark:text-gray-600"
+                          aria-hidden="true"
+                        >
+                          ·
+                        </span>
+                        <a
+                          href={`https://wa.me/${phone.wa}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-medium text-emerald-700 underline decoration-emerald-700/20 underline-offset-2 transition-colors hover:text-emerald-800 hover:decoration-emerald-700/50 dark:text-emerald-400/80 dark:hover:text-emerald-300"
+                        >
+                          WhatsApp
+                        </a>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <p className="mb-1.5 text-[11px] font-medium tracking-wide text-amber-900/40 dark:text-amber-200/35">
+                  Email
+                </p>
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className="text-sm font-medium text-amber-950 transition-colors hover:text-amber-700 dark:text-amber-100 dark:hover:text-amber-300"
+                >
+                  {contactEmail}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-2 border-t border-amber-900/10 pt-5 dark:border-gray-800 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t border-amber-900/10 pt-5 dark:border-gray-800 sm:flex-row">
           <p className="text-xs text-amber-900/40 dark:text-gray-500">
             © {new Date().getFullYear()} DustedBooks. All rights reserved.
           </p>
           <p className="text-xs text-amber-900/40 dark:text-gray-500">
-            Give books a second life. 📚
+            Give books a second life.
           </p>
         </div>
       </div>
