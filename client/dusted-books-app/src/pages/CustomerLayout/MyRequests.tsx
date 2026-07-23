@@ -149,7 +149,7 @@ export default function MyRequests() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fcfaf8] text-amber-950 dark:bg-gray-950 dark:text-amber-100 overflow-x-hidden w-full max-w-full">
+    <div className="min-h-screen bg-paper text-amber-950 dark:bg-gray-950 dark:text-amber-100 overflow-x-hidden w-full max-w-full">
       <Nav />
 
       <main className="mx-auto max-w-3xl px-4 pb-20 pt-28 sm:px-6 lg:pt-32">
@@ -162,7 +162,7 @@ export default function MyRequests() {
         </div>
 
         {/* ── Request form ── */}
-        <section className="mb-10 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
+        <section className="mb-10 rounded-2xl border border-amber-900/10 bg-paper-elevated p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900">
           <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-gray-100">Request a Book</h2>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div>
@@ -236,7 +236,7 @@ export default function MyRequests() {
           <h2 className="mb-4 text-lg font-semibold text-stone-800 dark:text-gray-100">Your Past Requests</h2>
 
           {loadingList ? (
-            <div className="rounded-2xl border border-stone-200 bg-white p-8 text-center text-sm text-stone-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400">
+            <div className="rounded-2xl border border-amber-900/10 bg-paper-elevated p-8 text-center text-sm text-stone-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400">
               Loading requests…
             </div>
           ) : listError ? (
@@ -255,7 +255,7 @@ export default function MyRequests() {
               {requests.map((req) => (
                 <li
                   key={req._id}
-                  className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:shadow-md dark:border-gray-700 dark:bg-gray-900"
+                  className="rounded-2xl border border-amber-900/10 bg-paper-elevated p-5 shadow-sm transition hover:shadow-md dark:border-gray-700 dark:bg-gray-900"
                 >
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">
