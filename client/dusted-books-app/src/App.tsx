@@ -19,8 +19,6 @@ const Browse = lazy(() => import("./pages/Browse"));
 const Cart = lazy(() => import("./pages/Cart"));
 const BookDetails = lazy(() => import("./pages/BookDetails"));
 const MyRequests = lazy(() => import("./pages/CustomerLayout/MyRequests"));
-const SellBook = lazy(() => import("./pages/CustomerLayout/SellBook"));
-const MySellRequests = lazy(() => import("./pages/CustomerLayout/MySellRequests"));
 const AdminDashboard = lazy(() => import("./pages/AdminLayout/Admin"));
 const UserManagement = lazy(() => import("./components/admin/user/UserManagement"));
 const BookManagement = lazy(() => import("./components/admin/book/BookManagement"));
@@ -28,9 +26,6 @@ const UserCreateForm = lazy(() => import("./components/admin/user/UserCreateForm
 const BookUpload = lazy(() => import("./components/admin/book/BookUpload"));
 const RequestManagement = lazy(
   () => import("./components/admin/requests/RequestManagement"),
-);
-const SellRequestManagement = lazy(
-  () => import("./components/admin/sell-requests/SellRequestManagement"),
 );
 
 function PageLoader() {
@@ -101,24 +96,6 @@ function App() {
                 />
 
                 <Route
-                  path="/sell-book"
-                  element={
-                    <ProtectedRoute>
-                      <SellBook />
-                    </ProtectedRoute>
-                  }
-                />
-
-                <Route
-                  path="/my-sell-requests"
-                  element={
-                    <ProtectedRoute>
-                      <MySellRequests />
-                    </ProtectedRoute>
-                  }
-                />
-
-                <Route
                   path="/admin"
                   element={
                     <AdminRoute>
@@ -138,11 +115,6 @@ function App() {
                   </Route>
                   {/* request-routes */}
                   <Route path="requests" element={<RequestManagement />} />
-                  {/* sell-request-routes */}
-                  <Route
-                    path="sell-requests"
-                    element={<SellRequestManagement />}
-                  />
                 </Route>
 
                 <Route path="/unauthorized" element={<Unauthorized />} />
