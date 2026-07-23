@@ -277,9 +277,9 @@ function Hero() {
       </div>
 
       {/* Warm paper / amber overlays for text contrast */}
-      <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-[#2a1c10]/80 via-[#3a2818]/50 to-[#1a120c]/85" />
+      <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-shelf-deep/80 via-shelf/50 to-shelf-deep/85" />
       <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-tr from-amber-950/30 via-transparent to-orange-950/20" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-40 bg-gradient-to-t from-[#1a120c]/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-40 bg-gradient-to-t from-shelf-deep/80 to-transparent" />
 
       {/* Soft dust motes — disabled under reduced motion */}
       {!prefersReducedMotion && (
@@ -425,7 +425,7 @@ function Hero() {
               role="dialog"
               aria-modal="true"
               aria-labelledby="sell-books-title"
-              className="relative w-full max-w-[420px] rounded-lg border border-amber-900/10 bg-white shadow-2xl shadow-black/20 dark:border-gray-700 dark:bg-gray-900"
+              className="relative w-full max-w-[420px] rounded-lg border border-amber-900/10 bg-paper-elevated shadow-2xl shadow-black/20 dark:border-gray-700 dark:bg-gray-900"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start justify-between gap-4 border-b border-amber-900/8 px-5 py-4 dark:border-gray-800">
@@ -473,7 +473,7 @@ function Hero() {
                     {CONTACT_PHONES.map((phone) => (
                       <li
                         key={phone.tel}
-                        className="flex flex-wrap items-center justify-between gap-3 bg-[#fcfaf8] px-4 py-3.5 dark:bg-gray-900/80"
+                        className="flex flex-wrap items-center justify-between gap-3 bg-paper px-4 py-3.5 dark:bg-gray-900/80"
                       >
                         <span className="text-sm font-medium tabular-nums text-amber-950 dark:text-amber-50">
                           {phone.display}
@@ -505,7 +505,7 @@ function Hero() {
                   </p>
                   <a
                     href={`mailto:${CONTACT_EMAIL}`}
-                    className="flex items-center justify-between gap-3 rounded-md border border-amber-900/10 bg-[#fcfaf8] px-4 py-3.5 text-sm font-medium text-amber-950 transition-colors hover:border-amber-700/25 hover:bg-amber-50/80 dark:border-gray-700 dark:bg-gray-900/80 dark:text-amber-50 dark:hover:bg-gray-800"
+                    className="flex items-center justify-between gap-3 rounded-md border border-amber-900/10 bg-paper px-4 py-3.5 text-sm font-medium text-amber-950 transition-colors hover:border-amber-700/25 hover:bg-amber-50/80 dark:border-gray-700 dark:bg-gray-900/80 dark:text-amber-50 dark:hover:bg-gray-800"
                   >
                     <span className="truncate">{CONTACT_EMAIL}</span>
                     <span className="shrink-0 text-xs font-medium text-amber-700 dark:text-amber-400">
