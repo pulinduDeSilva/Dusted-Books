@@ -231,15 +231,78 @@ const steps = [
 ];
 
 const browseCategories = [
-  "Fiction",
-  "Non-Fiction",
-  "Mystery",
-  "Self Help",
-  "Romance",
-  "Science",
-  "History",
-  "Biography",
-  "Kids",
+  {
+    name: "Fiction",
+    blurb: "Stories that transport you",
+    icon: BookOpenIcon,
+    accent: "from-amber-500 to-orange-500",
+    soft: "bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
+    ring: "group-hover:ring-amber-400/40",
+  },
+  {
+    name: "Non-Fiction",
+    blurb: "Ideas, facts & insight",
+    icon: NonFictionIcon,
+    accent: "from-sky-500 to-blue-600",
+    soft: "bg-sky-50 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300",
+    ring: "group-hover:ring-sky-400/40",
+  },
+  {
+    name: "Mystery",
+    blurb: "Twists until the last page",
+    icon: MysteryIcon,
+    accent: "from-indigo-500 to-violet-600",
+    soft: "bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300",
+    ring: "group-hover:ring-indigo-400/40",
+  },
+  {
+    name: "Self Help",
+    blurb: "Grow, focus, feel better",
+    icon: SelfHelpIcon,
+    accent: "from-emerald-500 to-teal-600",
+    soft: "bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300",
+    ring: "group-hover:ring-emerald-400/40",
+  },
+  {
+    name: "Romance",
+    blurb: "Hearts, heat & HEAs",
+    icon: RomanceIcon,
+    accent: "from-rose-500 to-pink-600",
+    soft: "bg-rose-50 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300",
+    ring: "group-hover:ring-rose-400/40",
+  },
+  {
+    name: "Science",
+    blurb: "Wonder of how it works",
+    icon: ScienceIcon,
+    accent: "from-cyan-500 to-teal-600",
+    soft: "bg-cyan-50 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300",
+    ring: "group-hover:ring-cyan-400/40",
+  },
+  {
+    name: "History",
+    blurb: "Past lives, present lessons",
+    icon: HistoryIcon,
+    accent: "from-stone-500 to-amber-700",
+    soft: "bg-stone-100 text-stone-700 dark:bg-stone-800/60 dark:text-stone-300",
+    ring: "group-hover:ring-stone-400/40",
+  },
+  {
+    name: "Biography",
+    blurb: "Real people, real stories",
+    icon: BiographyIcon,
+    accent: "from-violet-500 to-purple-600",
+    soft: "bg-violet-50 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300",
+    ring: "group-hover:ring-violet-400/40",
+  },
+  {
+    name: "Kids",
+    blurb: "Adventures for little readers",
+    icon: SparklesIcon,
+    accent: "from-yellow-400 to-orange-500",
+    soft: "bg-yellow-50 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300",
+    ring: "group-hover:ring-yellow-400/40",
+  },
 ] as const;
 
 const perks = [
@@ -420,7 +483,7 @@ export default function Landing() {
               className="h-10 w-10 object-contain sm:h-11 sm:w-11"
             />
             <span
-              className={`bg-clip-text text-transparent bg-gradient-to-r ${
+              className={`font-brand bg-clip-text text-transparent bg-gradient-to-r ${
                 scrolled
                   ? "from-amber-900 to-amber-700 dark:from-amber-400 dark:to-amber-300"
                   : "from-white to-amber-100"
@@ -649,8 +712,13 @@ export default function Landing() {
       </section>
 
       {/* ── Browse by Category ── */}
-      <section className="bg-white px-5 py-14 dark:bg-gray-900/50 sm:px-6 sm:py-16">
-        <div className="mx-auto max-w-6xl">
+      <section className="relative overflow-hidden bg-white px-5 py-14 dark:bg-gray-900/50 sm:px-6 sm:py-16">
+        {/* Soft shelf-like backdrop wash */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-amber-50/80 to-transparent dark:from-amber-950/20"
+        />
+        <div className="relative mx-auto max-w-6xl">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-10">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-amber-700 dark:text-amber-400">
               Find Your Genre
@@ -665,17 +733,59 @@ export default function Landing() {
 
           <div
             ref={categoriesRef}
-            className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3"
+            className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-3"
           >
-            {browseCategories.map((cat) => (
-              <Link
-                key={cat}
-                to={`/browse?category=${encodeURIComponent(cat)}`}
-                className="category-chip rounded-full border border-amber-900/10 bg-[#fcfaf8] px-5 py-2.5 text-sm font-semibold text-amber-950 transition-all duration-200 hover:-translate-y-0.5 hover:border-amber-600/40 hover:bg-amber-50 hover:text-amber-800 hover:shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-amber-100 dark:hover:border-amber-500/40 dark:hover:bg-gray-750 dark:hover:text-amber-300"
-              >
-                {cat}
-              </Link>
-            ))}
+            {browseCategories.map((cat) => {
+              const Icon = cat.icon;
+              return (
+                <Link
+                  key={cat.name}
+                  to={`/browse?category=${encodeURIComponent(cat.name)}`}
+                  className={`category-chip group relative flex flex-col overflow-hidden rounded-2xl border border-amber-900/8 bg-[#fcfaf8] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-amber-900/15 hover:shadow-xl hover:shadow-amber-900/8 dark:border-gray-700 dark:bg-gray-800/80 dark:hover:border-gray-600 dark:hover:shadow-black/30 sm:p-5 ${cat.ring} ring-0 hover:ring-2`}
+                >
+                  {/* Top accent bar */}
+                  <span
+                    aria-hidden
+                    className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-80 transition-opacity group-hover:opacity-100 ${cat.accent}`}
+                  />
+
+                  <div className="flex items-start justify-between gap-3">
+                    <span
+                      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl shadow-sm ring-1 ring-black/5 transition-transform duration-300 group-hover:scale-110 dark:ring-white/10 sm:h-12 sm:w-12 ${cat.soft}`}
+                    >
+                      <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                    </span>
+                    <span className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-amber-900/5 text-amber-900/40 transition-all duration-300 group-hover:bg-amber-600 group-hover:text-white dark:bg-white/5 dark:text-amber-100/40 dark:group-hover:bg-amber-500">
+                      <ArrowRightIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
+
+                  <div className="mt-4 min-w-0">
+                    <h3 className="truncate text-base font-bold tracking-tight text-amber-950 dark:text-amber-50 sm:text-lg">
+                      {cat.name}
+                    </h3>
+                    <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-amber-800/60 dark:text-amber-200/45 sm:text-sm">
+                      {cat.blurb}
+                    </p>
+                  </div>
+
+                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-amber-700/70 transition-colors group-hover:text-amber-700 dark:text-amber-400/60 dark:group-hover:text-amber-300">
+                    Explore shelf
+                    <ArrowRightIcon className="h-3 w-3 opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100" />
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="mt-8 flex justify-center sm:mt-10">
+            <Link
+              to="/browse"
+              className="group inline-flex items-center gap-2 rounded-full border border-amber-900/10 bg-[#fcfaf8] px-5 py-2.5 text-sm font-semibold text-amber-900/80 transition-all hover:border-amber-600/40 hover:bg-amber-50 hover:text-amber-700 hover:shadow-md hover:shadow-amber-900/5 dark:border-gray-700 dark:bg-gray-800 dark:text-amber-100/80 dark:hover:bg-amber-900/20 dark:hover:text-amber-300"
+            >
+              View all books
+              <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </section>
