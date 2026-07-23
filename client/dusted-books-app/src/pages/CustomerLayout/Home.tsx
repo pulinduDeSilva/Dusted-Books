@@ -29,7 +29,7 @@ function Home() {
   
 
   return (
-    <div id="smooth-wrapper" className="bg-[#fcfaf8] dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white min-h-screen overflow-x-hidden w-full max-w-full">
+    <div id="smooth-wrapper" className="bg-paper dark:bg-gray-950 text-amber-950 dark:text-amber-100 font-sans selection:bg-amber-900 selection:text-white min-h-screen overflow-x-hidden w-full max-w-full">
       <Nav />
 
       <div id="smooth-content">
