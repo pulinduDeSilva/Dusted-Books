@@ -63,7 +63,7 @@ function Footer() {
   const { user } = useAuth();
 
   return (
-    <footer className="border-t border-amber-900/10 bg-white px-5 py-10 dark:border-gray-800 dark:bg-gray-900/50 sm:px-6 sm:py-12">
+    <footer className="border-t border-amber-900/10 bg-paper-elevated px-5 py-10 dark:border-gray-800 dark:bg-gray-900/50 sm:px-6 sm:py-12">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-6">
           {/* Brand + socials */}
@@ -91,7 +91,7 @@ function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`DustedBooks on ${social.name}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-md border border-amber-900/10 bg-[#fcfaf8] text-amber-800/55 transition-colors hover:border-amber-700/25 hover:bg-amber-50 hover:text-amber-800 dark:border-gray-700 dark:bg-gray-800 dark:text-amber-200/55 dark:hover:bg-gray-700 dark:hover:text-amber-200"
+                  className="flex h-9 w-9 items-center justify-center rounded-md border border-amber-900/10 bg-paper text-amber-800/55 transition-colors hover:border-amber-700/25 hover:bg-amber-50 hover:text-amber-800 dark:border-gray-700 dark:bg-gray-800 dark:text-amber-200/55 dark:hover:bg-gray-700 dark:hover:text-amber-200"
                 >
                   {social.icon}
                 </a>
